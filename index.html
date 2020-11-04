@@ -29,17 +29,31 @@
         What's the weather?
     </a>
     <a class="col-1">
-      Zaloguj
+        Zaloguj
     </a>
     <a class="col-1">
-      Zarejestruj
+        Zarejestruj
     </a>
 </nav>
 
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            One of three columns
+            <div>
+                <input type="text" name="" autocomplete="off" class="search-box" placeholder="Wyszukaj miasto...">
+            </div>
+            <div>
+                <section class="location">
+                    <div class="city"></div>
+                    <div class="date"></div>
+                </section>
+                <div class="current">
+                    <div class="temp"><span></span></div>
+                    <div class="weather"></div>
+                    <div class="hi-low"></div>
+                </div>
+                <script src="js/pogoda.js"></script>
+            </div>
         </div>
         <div class="col-md-2">
             One of three columns
