@@ -20,6 +20,9 @@ function getResults (query) {
 }
 
 function displayResults (weather) {
+    if (weather) {
+        displayAd(weather);
+    }
     console.log(weather);
     let city = document.querySelector('.location .city');
     city.innerText = `${weather.name}, ${weather.sys.country}`;
@@ -29,11 +32,8 @@ function displayResults (weather) {
     let seconds=weather.timezone;
     utc.setSeconds(utc.getSeconds() + seconds);
     let date2=dateBuilder(utc);
-    date.innerText = date2;
 
-    let icon = document.querySelector('.image');
-    let url = "url('http://openweathermap.org/img/wn/" + weather.weather[0].icon + "@2x.png')"
-    icon.style.backgroundImage=url;
+    date.innerText = date2;
 
     let temp = document.querySelector('.current .temp');
     temp.innerHTML = `${Math.round(weather.main.temp)}<span>°C</span>`;
