@@ -35,6 +35,10 @@ function displayResults (weather) {
 
     date.innerText = date2;
 
+    let icon = document.querySelector('.image');
+    let url = "url('http://openweathermap.org/img/wn/" + weather.weather[0].icon + "@2x.png')"
+    icon.style.backgroundImage=url;
+
     let temp = document.querySelector('.current .temp');
     temp.innerHTML = `${Math.round(weather.main.temp)}<span>°C</span>`;
 
