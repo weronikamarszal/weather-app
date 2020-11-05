@@ -10,7 +10,6 @@
     <script src="js/bootstrap.min.js"></script>
     <title>What's the weather?</title>
 
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
           crossorigin=""/>
@@ -18,11 +17,14 @@
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
             crossorigin=""></script>
     <style>#mapid {
-        height: 180px;
+        height: 600px;
     }</style>
 </head>
-<body>
 
+<!--=================================================================================================================-->
+
+<body>
+<!--===============================================HEADER============================================================-->
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#" style="flex:1">
         <img src="img/icon.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
@@ -36,28 +38,40 @@
     </a>
 </nav>
 
+<!--===============================================MAIN==============================================================-->
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <div>
+        <!-----------------WEATHER CARD------------------>
+        <div class="col-md-4 text-center">
+            <div class="mt-2">
                 <input type="text" name="" autocomplete="off" class="search-box" placeholder="Wyszukaj miasto...">
             </div>
-            <div>
+
+            <div class="mt-5">
                 <section class="location">
-                    <div class="city"></div>
-                    <div class="date"></div>
+                    <div class="city mt-2"></div>
+                    <div class="date mt-2"></div>
                 </section>
-                <div class="current">
-                    <div class="temp"><span></span></div>
-                    <div class="weather"></div>
-                    <div class="hi-low"></div>
+
+                <div class="image mt-3">
+                <img src="img/sun.png" class="img-fluid" alt="Responsive image">
+                </div>
+
+                <div class="current mt-5">
+                    <div class="temp mt-2"><span></span></div>
+                    <div class="weather mt-1"></div>
+                    <div class="hi-low mt-2"></div>
                 </div>
                 <script src="js/pogoda.js"></script>
             </div>
         </div>
+
+        <!-----------------CITIES CARD------------------->
         <div class="col-md-2">
             One of three columns
         </div>
+
+        <!---------------------MAP----------------------->
         <div class="col-md-6">
             <div id="mapid">
             </div>
@@ -65,7 +79,7 @@
     </div>
 </div>
 
-
+<!--===============================================FOOTER============================================================-->
 <footer>
     <p>&copy; Danylo Arbuzov, Jerzy Grzelak, Weronika Marszał</p>
 </footer>
