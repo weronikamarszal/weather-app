@@ -104,11 +104,6 @@ function addTask() {
             if (inputTask.value.length < 2) {
                 inputTask.value = "";
                 alert('To pole musi zawierac wiecej niz 2 znaki');
-
-                let listItem = createNewElement(inputTask.value);
-                task.appendChild(listItem);
-                inputTask.value = "";
-                save();
             } else {
                 let listItem = createNewElement(inputTask.value);
                 task.appendChild(listItem);
