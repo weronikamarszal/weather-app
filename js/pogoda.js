@@ -66,7 +66,6 @@ function dateBuilder (d) {
 
 //======================================ZAPISYWANIE MIAST DO LOCAL STORAGE============================================//
 
-let addButton = document.getElementById('add');
 let inputTask = document.getElementById('city');
 let task = document.getElementById('tasks');
 
