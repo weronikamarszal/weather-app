@@ -68,7 +68,7 @@ function createAdvertisementHTML(advertisement) {
     let elementInner = document.querySelector("#advertisementTemplate").content.cloneNode(true);
     element.append(elementInner);
 
-    let image = element.querySelector(".image");
+    let image = element.querySelector(".advert-image");
     image.src = advertisement.image;
     let desc = element.querySelector(".desc");
     desc.innerText = advertisement.description;
