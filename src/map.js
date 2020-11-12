@@ -8,13 +8,8 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoiaXB6MSIsImEiOiJja2dwM29tcXEwaWVtMnNtbmJpcDJwdG5yIn0.aF8XSlnXwu8uKxb3aOrIIw'
 }).addTo(mymap);
 
-var popup = L.popup();
-
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(mymap);
+function setMapLocation(coords) {
+    mymap.setView([coords.lat, coords.lon], 13);
+    L.marker([coords.lat, coords.lon]).addTo(mymap);
 }
 
-mymap.on('click', onMapClick);
