@@ -16,6 +16,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
             crossorigin=""></script>
+    <link rel="stylesheet" href="advertisement.css">
     <style>#mapid {
         height: 600px;
     }</style>
@@ -41,45 +42,50 @@
 <!--===============================================MAIN==============================================================-->
 <div class="container">
     <div class="row">
-        <!-----------------WEATHER CARD------------------>
-        <div class="col-md-4 text-center">
-            <div class="mt-2">
-                <input type="text" name="" autocomplete="off" class="search-box" placeholder="Wyszukaj miasto...">
-            </div>
+        <div class="col-md-1 p-0 advertisement">
 
-            <div class="mt-5">
-                <section class="location">
-                    <div class="city mt-2"></div>
-                    <div class="date mt-2"></div>
-                </section>
-
-                <div class="image mt-3">
+        </div>
+        <div class="col-md-10 row">
+            <!-----------------WEATHER CARD------------------>
+            <div class="col-md-4 text-center">
+                <div class="mt-2">
+                    <input type="text" name="" autocomplete="off" class="search-box" placeholder="Wyszukaj miasto...">
                 </div>
 
-                <div class="current mt-5">
-                    <div class="temp mt-2"><span></span></div>
-                    <div class="weather mt-1"></div>
-                    <div class="hi-low mt-2"></div>
+                <div class="mt-5">
+                    <section class="location">
+                        <div class="city mt-2"></div>
+                        <div class="date mt-2"></div>
+                    </section>
+
+                    <div class="image mt-3">
+                    </div>
+
+                    <div class="current mt-5">
+                        <div class="temp mt-2"><span></span></div>
+                        <div class="weather mt-1"></div>
+                        <div class="hi-low mt-2"></div>
+                    </div>
+                    <script src="js/pogoda.js"></script>
                 </div>
-                <script src="js/pogoda.js"></script>
+            </div>
+
+            <!-----------------CITIES CARD------------------->
+            <div class="col-md-2">
+                One of three columns
+            </div>
+
+            <!---------------------MAP----------------------->
+            <div class="col-md-6">
+                <div id="mapid">
+                </div>
             </div>
         </div>
+        <!-----------------AD------------------>
+        <div class="col-md-1 p-0 advertisement">
 
-        <!-----------------CITIES CARD------------------->
-        <div class="col-md-2">
-            One of three columns
-        </div>
-
-        <!---------------------MAP----------------------->
-        <div class="col-md-6">
-            <div id="mapid">
-            </div>
         </div>
     </div>
-    <div id="advertisement">
-
-    </div>
-
 </div>
 
 <!--===============================================FOOTER============================================================-->
@@ -97,5 +103,12 @@
 <script src="src/map.js"></script>
 <script src="src/advertisement.js"></script>
 
+
 </body>
+<template id="advertisementTemplate">
+    <h4 class="title"></h4>
+    <img class="image">
+    <p class="desc"></p>
+
+</template>
 </html>
