@@ -4,19 +4,32 @@ const api={
 }
 const searchbox = document.querySelector('.search-box');
 searchbox.addEventListener('keypress', setQuery);
-
+var lan;
+var lat;
 function setQuery(evt) {
-   if(evt.keyCode==13){
-       getResults(searchbox.value);
-       console.log(searchbox.value);
-   }
+    if(evt.keyCode==13){
+        getResults(searchbox.value).then(weather=>{
+            if(weather) {
+                lan = weather.coord.lon;
+                lat = weather.coord.lat;
+                displayResults(weather);
+                getWeather();
+            }
+        });
+    }
 }
 
-function getResults (query) {
-    fetch(`${api.baseurl}weather?q=${query}&units=metric&APPID=${api.key}&lang=pl`)
-        .then(weather => {
-            return weather.json();
-        }).then(displayResults);
+async function getResults(query) {
+    const response = await fetch(`${api.baseurl}weather?q=${query}&units=metric&APPID=${api.key}&lang=pl`);
+    const weather  = await response.json();
+    return weather;
+}
+function getWeather(){
+    console.log(lan,lat);
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lan}&exclude=daily,minutely&appid=7a7b4325b0cdbb4e8bc97d4c5138c58d&units=metric`)
+        .then(weathers=> {
+            return weathers.json();
+        }).then(displayForecast);
 }
 
 function displayResults (weather) {
@@ -24,8 +37,7 @@ function displayResults (weather) {
         displayAd(weather);
         setMapLocation(weather.coord);
     }
-
-    console.log(weather);
+    //console.log(weather);
     let city = document.querySelector('.location .city');
     city.innerText = `${weather.name}, ${weather.sys.country}`;
     let now = new Date();
@@ -49,6 +61,40 @@ function displayResults (weather) {
 
     let hilow = document.querySelector('.hi-low');
     hilow.innerText = `${Math.round(weather.main.temp_min)}°C / ${Math.round(weather.main.temp_max)}°C`;
+}
+
+function displayForecast(weathers){
+    console.log(weathers);
+    console.log(lan,lat);
+    let ex=document.querySelector('.current,.ex')
+    let arrayW=[];
+    let arrayDates=[];
+    let arrayTemps=[];
+    console.log(JSON.stringify(weathers.hourly[1].dt));
+    for(i=0;i<weathers.hourly.length;i++){
+        let time=weathers.hourly[i].dt;
+        let temp=weathers.hourly[i].temp;
+        arrayW.push([time,temp]);
+        myDate = new Date(1000*time);
+        let seconds=weathers.timezone_offset;
+        myDate.setSeconds(myDate.getSeconds() + seconds);
+        arrayDates.push(myDate.toString().slice(4,21));
+        arrayTemps.push(temp);
+        //console.log(myDate.toString().slice(4,21));
+    }
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: arrayDates,
+            datasets: [
+                {
+                    data: arrayTemps
+                }
+            ]
+        }
+    });
+    console.log(arrayW);
 }
 
 function dateBuilder (d) {
