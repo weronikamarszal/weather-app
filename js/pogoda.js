@@ -113,7 +113,7 @@ function dateBuilder (d) {
 //======================================ZAPISYWANIE MIAST DO LOCAL STORAGE============================================//
 
 let inputTask = document.getElementById('city');
-let task = document.getElementById('tasks');
+let task = document.getElementById('cities');
 
 function createNewElement(task) {
     let listItem = document.createElement('li');
@@ -127,7 +127,6 @@ function createNewElement(task) {
     };
     listItem.appendChild(label);
     listItem.appendChild(deleteButton);
-
     return listItem;
 }
 
@@ -146,20 +145,14 @@ function addTask() {
 (function() {
     document.querySelector('input').addEventListener('keydown', function(e) {
         if (e.keyCode === 13) {
-            if (inputTask.value.length < 2) {
-                inputTask.value = "";
-                alert('To pole musi zawierac wiecej niz 2 znaki');
-            } else {
                 let listItem = createNewElement(inputTask.value);
                 task.appendChild(listItem);
                 inputTask.value = "";
                 save();
-            }
         }
     });
 })();
-/*==================================================================================================================*/
-/*==================================================================================================================*/
+
 function save() {
 
     let taskArr = [];
