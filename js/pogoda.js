@@ -2,22 +2,28 @@ const api={
     key:"7a7b4325b0cdbb4e8bc97d4c5138c58d",
     baseurl:"https://api.openweathermap.org/data/2.5/"
 }
-const searchbox = document.querySelector('.search-box');
-searchbox.addEventListener('keypress', setQuery);
-var lan;
-var lat;
-function setQuery(evt) {
-    if(evt.keyCode==13){
-        getResults(searchbox.value).then(weather=>{
-            if(weather) {
-                lan = weather.coord.lon;
-                lat = weather.coord.lat;
-                displayResults(weather);
-                getWeather();
-            }
-        });
-    }
-}
+//const searchbox = document.querySelector('.search-box');
+//searchbox.addEventListener('keypress', setQuery);
+let lan;
+let lat;
+// function setQuery(evt) {
+//     if(evt.keyCode==13){
+//         getResults(searchbox.value).then(weather=>{
+//             if(weather) {
+//                 lan = weather.coord.lon;
+//                 lat = weather.coord.lat;
+//                 displayResults(weather);
+//                 getWeather();
+//
+//             }
+//         }
+//         );
+//         // let listItem = createNewElement(inputTask.value);
+//         // task.appendChild(listItem);
+//         // inputTask.value = "";
+//         // save();
+//     }
+// }
 
 async function getResults(query) {
     const response = await fetch(`${api.baseurl}weather?q=${query}&units=metric&APPID=${api.key}&lang=pl`);
@@ -110,16 +116,20 @@ function dateBuilder (d) {
     return `${day}, ${date} ${month} ${year}, ${hours}:${minutes}`;
 }
 
+
 //======================================ZAPISYWANIE MIAST DO LOCAL STORAGE============================================//
+
 
  let inputTask = document.getElementById('city');
  let task = document.getElementById('cities');
 
  function createNewElement(task) {
      let listItem = document.createElement('li');
+     listItem.className = "list-group-item";
      let label = document.createElement('label');
      label.innerText = task;
      let deleteButton = document.createElement('button');
+     deleteButton.className = "btn btn-primary btn-sm";
      deleteButton.innerText = "Delete";
      deleteButton.onclick = function () {
          deleteButton.parentElement.remove()
@@ -130,52 +140,51 @@ function dateBuilder (d) {
      return listItem;
  }
 
- function addTask() {
-     if (inputTask.value.length > 2 && inputTask.value.length < 256) {
-         let listItem = createNewElement(inputTask.value);
-         task.appendChild(listItem);
-         inputTask.value = "";
-         save();
-     } else {
-         inputTask.value = "";
-         alert('To pole musi zawierac wiecej niz 2 znaki i mniej niz 256 znaki');
-     }
- }
-
  (function() {
      document.querySelector('input').addEventListener('keydown', function(e) {
          if (e.keyCode === 13) {
-                 let listItem = createNewElement(inputTask.value);
-                 task.appendChild(listItem);
-                 inputTask.value = "";
-                 save();
+             getResults(inputTask.value).then(weather=>{
+                     if(weather) {
+                         lan = weather.coord.lon;
+                         lat = weather.coord.lat;
+                         displayResults(weather);
+                         getWeather();
+
+                     }
+                 }
+             );
+             let listItem = createNewElement(inputTask.value);
+             task.appendChild(listItem);
+             inputTask.value = "";
+             save();
+             alert("hello");
          }
      });
  })();
 
- function save() {
+function save() {
 
-     let taskArr = [];
-     for (let i = 0; i < task.children.length; i++) {
-         taskArr.push(task.children[i].getElementsByTagName('label')[0].innerText);
-     }
+    let taskArr = [];
+    for (let i = 0; i < task.children.length; i++) {
+        taskArr.push(task.children[i].getElementsByTagName('label')[0].innerText);
+    }
 
-     localStorage.removeItem('todo');
-     localStorage.setItem('todo', JSON.stringify({
-         task: taskArr
-     }));
+    localStorage.removeItem('todo');
+    localStorage.setItem('todo', JSON.stringify({
+        task: taskArr
+    }));
 
- }
+}
 
- function load(){
-     return JSON.parse(localStorage.getItem('todo'));
- }
+function load(){
+    return JSON.parse(localStorage.getItem('todo'));
+}
 
- let data=load();
+let data=load();
 
- for(let i=0; i<data.task.length;i++){
-     let listItem=createNewElement(data.task[i], false);
-     task.appendChild(listItem);
- }
+for(let i=0; i<data.task.length;i++){
+    let listItem=createNewElement(data.task[i], false);
+    task.appendChild(listItem);
+}
 
 //====================================================================================================================//
