@@ -116,19 +116,21 @@ function dateBuilder (d) {
  let task = document.getElementById('cities');
 
  function createNewElement(task) {
-     let listItem = document.createElement('li');
-     let label = document.createElement('label');
-     label.innerText = task;
-     let deleteButton = document.createElement('button');
-     deleteButton.innerText = "Delete";
-     deleteButton.onclick = function () {
-         deleteButton.parentElement.remove()
-         save();
-     };
-     listItem.appendChild(label);
-     listItem.appendChild(deleteButton);
-     return listItem;
- }
+     console.log(task);
+    let listItem = document.createElement('li');
+    let label = document.createElement('label');
+    label.innerText = task;
+    let deleteButton = document.createElement('button');
+    deleteButton.innerText = "Delete";
+    deleteButton.onclick = function () {
+        deleteButton.parentElement.remove()
+        save();
+    };
+    listItem.appendChild(label);
+    listItem.appendChild(deleteButton);
+
+    return listItem;
+}
 
  function addTask() {
      if (inputTask.value.length > 2 && inputTask.value.length < 256) {
