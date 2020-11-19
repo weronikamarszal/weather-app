@@ -16,9 +16,9 @@ function setQuery(evt) {
                 getWeather();
             }
         });
-        let listItem = createNewElement(inputTask.value);
+        let listItem = createNewElement(searchbox.value);
         task.appendChild(listItem);
-        inputTask.value = "";
+        searchbox.value = "";
         save();
     }
 }
@@ -150,32 +150,23 @@ function dateBuilder (d) {
  let inputTask = document.getElementById('city');
  let task = document.getElementById('cities');
 
- function createNewElement(task) {
-     let listItem = document.createElement('li');
-     let label = document.createElement('label');
-     label.innerText = task;
-     let deleteButton = document.createElement('button');
-     deleteButton.innerText = "Delete";
-     deleteButton.onclick = function () {
-         deleteButton.parentElement.remove()
-         save();
-     };
-     listItem.appendChild(label);
-     listItem.appendChild(deleteButton);
-     return listItem;
- }
+function createNewElement(task) {
+    let listItem = document.createElement('li');
+    listItem.className = "list-group-item listElement";
+    let label = document.createElement('label');
+    label.innerText = task;
+    let deleteButton = document.createElement('button');
+    deleteButton.className = "btn btn-primary btn-sm";
+    deleteButton.innerText = "Delete";
+    deleteButton.onclick = function () {
+        deleteButton.parentElement.remove()
+        save();
+    };
+    listItem.appendChild(label);
+    listItem.appendChild(deleteButton);
+    return listItem;
+}
 
- function addTask() {
-     if (inputTask.value.length > 2 && inputTask.value.length < 256) {
-         let listItem = createNewElement(inputTask.value);
-         task.appendChild(listItem);
-         inputTask.value = "";
-         save();
-     } else {
-         inputTask.value = "";
-         alert('To pole musi zawierac wiecej niz 2 znaki i mniej niz 256 znaki');
-     }
- }
 /*
  (function() {
      document.querySelector('input').addEventListener('keydown', function(e) {
