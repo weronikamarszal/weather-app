@@ -125,7 +125,7 @@ let task = document.getElementById('cities');
 
 function createNewElement(task) {
     let listItem = document.createElement('li');
-    listItem.className = "list-group-item";
+    listItem.className = "list-group-item listElement";
     let label = document.createElement('label');
     label.innerText = task;
     let deleteButton = document.createElement('button');
