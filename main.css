@@ -1,0 +1,4 @@
+.listElement {
+    display: flex;
+    justify-content: space-between;
+}

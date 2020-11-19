@@ -3,6 +3,7 @@ class Advertisement {
         name,
         id,
         description,
+        more,
         image,
         link,
         tag,
@@ -10,6 +11,7 @@ class Advertisement {
         this.name = name;
         this.id = id;
         this.description = description;
+        this.more = more;
         this.image = image;
         this.link = link;
         this.tag = tag;
@@ -22,17 +24,19 @@ const Tag = {
     RAIN: 'RAIN',
 }
 
+let more = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
 const advertisements = [
-    new Advertisement('Ad1', 1, 'zimno? kup sweter', "./img/ads/cold.jpeg", null, Tag.COLD),
-    new Advertisement('Ad2', 2, 'ciepło? zjedz loda', "./img/ads/hot.jpeg", null, Tag.HOT),
-    new Advertisement('Ad3', 3, 'zimno? brrrrrrr', "./img/ads/cold.jpeg", null, Tag.COLD),
-    new Advertisement('Ad4', 4, 'ale mróz!', "./img/ads/cold.jpeg", null, Tag.COLD),
-    new Advertisement('Ad5', 5, 'kap kap kap', "./img/ads/rain.jpeg", null, Tag.RAIN),
-    new Advertisement('Ad6', 6, 'pada? kup parasol', "./img/ads/rain.jpeg", null, Tag.RAIN),
-    new Advertisement('Ad7', 7, 'zapraszam na lody', "./img/ads/hot.jpeg", null, Tag.HOT),
-    new Advertisement('Ad8', 8, 'daj się ochłodzić', "./img/ads/hot.jpeg", null, Tag.HOT),
-    new Advertisement('Ad9', 9, 'deszcz za oknami', "./img/ads/rain.jpeg", null, Tag.RAIN),
-    new Advertisement('Ad10', 10, 'zmokłeś?', "./img/ads/rain.jpeg", null, Tag.RAIN),
+    new Advertisement('Ad1', 1, 'zimno? kup sweter', more, "./img/ads/cold.jpeg", null, Tag.COLD),
+    new Advertisement('Ad2', 2, 'ciepło? zjedz loda', more, "./img/ads/hot.jpeg", null, Tag.HOT),
+    new Advertisement('Ad3', 3, 'zimno? brrrrrrr', more, "./img/ads/cold.jpeg", null, Tag.COLD),
+    new Advertisement('Ad4', 4, 'ale mróz!', more, "./img/ads/cold.jpeg", null, Tag.COLD),
+    new Advertisement('Ad5', 5, 'kap kap kap', more, "./img/ads/rain.jpeg", null, Tag.RAIN),
+    new Advertisement('Ad6', 6, 'pada? kup parasol', more, "./img/ads/rain.jpeg", null, Tag.RAIN),
+    new Advertisement('Ad7', 7, 'zapraszam na lody', more, "./img/ads/hot.jpeg", null, Tag.HOT),
+    new Advertisement('Ad8', 8, 'daj się ochłodzić', more, "./img/ads/hot.jpeg", null, Tag.HOT),
+    new Advertisement('Ad9', 9, 'deszcz za oknami', more, "./img/ads/rain.jpeg", null, Tag.RAIN),
+    new Advertisement('Ad10', 10, 'zmokłeś?', more, "./img/ads/rain.jpeg", null, Tag.RAIN),
 ];
 
 function getTag(weather) {
@@ -70,10 +74,19 @@ function createAdvertisementHTML(advertisement) {
 
     let image = element.querySelector(".advert-image");
     image.src = advertisement.image;
+    let more =element.querySelector(".more");
+    image.addEventListener("mouseenter", function (event) {
+         more.innerText=advertisement.more;
+    })
+    image.addEventListener("mouseleave", function (event) {
+        more.innerText="";
+    })
+
     let desc = element.querySelector(".desc");
     desc.innerText = advertisement.description;
     let title = element.querySelector(".title");
     title.innerText = advertisement.name;
+
 
     return element;
 }
@@ -85,7 +98,6 @@ function displayAd(weather) {
             i.children[0].remove();
         }
         i.append(createAdvertisementHTML(ad(getTag(weather))));
-
     })
 }
 

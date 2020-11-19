@@ -15,6 +15,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
             crossorigin=""></script>
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="advertisement.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <style>
@@ -48,11 +49,11 @@
 
 <!--===============================================MAIN==============================================================-->
 <div class="container">
-    <div class="row">
+    <div class="row no-gutters">
         <div class="col-md-1 p-0 advertisement">
 
         </div>
-        <div class="col-md-10 row">
+        <div class="col-md-10 row no-gutters">
             <!-----------------WEATHER CARD------------------>
             <div class="col-md-4 text-center">
                 <div class="mt-2">
@@ -79,13 +80,11 @@
             <!-----------------CITIES CARD------------------->
             <div class="col-md-2">
                 <h4>Twoje Miasta</h4>
-                <ul id="cities">
-                    <li>klmk</li>
-                    <li>mkkl</li>
+                <ul class="list-group list-group-flush" id="cities">
                 </ul>
             </div>
 
-            <!---------------------MAP CARD----------------------->
+            <!---------------------MAP----------------------->
             <div class="col-md-6">
                 <div id="mapid">
                 </div>
@@ -126,6 +125,7 @@
     <h4 class="title"></h4>
     <img class="advert-image">
     <p class="desc"></p>
+    <p class="more"></p>
 
 </template>
 </html>
