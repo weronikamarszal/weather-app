@@ -16,6 +16,10 @@ function setQuery(evt) {
                 getWeather();
             }
         });
+        let listItem = createNewElement(inputTask.value);
+        task.appendChild(listItem);
+        inputTask.value = "";
+        save();
     }
 }
 
@@ -82,6 +86,8 @@ function displayForecast(weathers){
         arrayTemps.push(temp);
         //console.log(myDate.toString().slice(4,21));
     }
+    console.log(arrayDates);
+    let citynCountry=document.getElementById("city-country").innerText;
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
         type: 'line',
@@ -89,9 +95,38 @@ function displayForecast(weathers){
             labels: arrayDates,
             datasets: [
                 {
+                    borderColor: '#69CDE6',
+                    backgroundColor: 'rgba(12, 176, 216, 0.1)',
                     data: arrayTemps
                 }
             ]
+        },
+        options:{
+            title: {
+                display: true,
+                text: `Prognoza pogody dla ${citynCountry}`,
+                fontSize: 16,
+                fontStyle: 'bold'
+            },
+            legend: {
+                display: false,
+            },
+            scales:{
+                yAxes:[{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Temperatura w °C',
+                        fontSize: 16
+                    }
+                }],
+                xAxes:[{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Data i godzina',
+                        fontSize: 16
+                    }
+                }]
+            }
         }
     });
     console.log(arrayW);
@@ -141,7 +176,7 @@ function dateBuilder (d) {
          alert('To pole musi zawierac wiecej niz 2 znaki i mniej niz 256 znaki');
      }
  }
-
+/*
  (function() {
      document.querySelector('input').addEventListener('keydown', function(e) {
          if (e.keyCode === 13) {
@@ -151,7 +186,7 @@ function dateBuilder (d) {
                  save();
          }
      });
- })();
+ })();*/
 
  function save() {
 
