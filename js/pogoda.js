@@ -112,70 +112,70 @@ function dateBuilder (d) {
 
 //======================================ZAPISYWANIE MIAST DO LOCAL STORAGE============================================//
 
-let inputTask = document.getElementById('city');
-let task = document.getElementById('cities');
+ let inputTask = document.getElementById('city');
+ let task = document.getElementById('cities');
 
-function createNewElement(task) {
-    let listItem = document.createElement('li');
-    let label = document.createElement('label');
-    label.innerText = task;
-    let deleteButton = document.createElement('button');
-    deleteButton.innerText = "Delete";
-    deleteButton.onclick = function () {
-        deleteButton.parentElement.remove()
-        save();
-    };
-    listItem.appendChild(label);
-    listItem.appendChild(deleteButton);
-    return listItem;
-}
+ function createNewElement(task) {
+     let listItem = document.createElement('li');
+     let label = document.createElement('label');
+     label.innerText = task;
+     let deleteButton = document.createElement('button');
+     deleteButton.innerText = "Delete";
+     deleteButton.onclick = function () {
+         deleteButton.parentElement.remove()
+         save();
+     };
+     listItem.appendChild(label);
+     listItem.appendChild(deleteButton);
+     return listItem;
+ }
 
-function addTask() {
-    if (inputTask.value.length > 2 && inputTask.value.length < 256) {
-        let listItem = createNewElement(inputTask.value);
-        task.appendChild(listItem);
-        inputTask.value = "";
-        save();
-    } else {
-        inputTask.value = "";
-        alert('To pole musi zawierac wiecej niz 2 znaki i mniej niz 256 znaki');
-    }
-}
+ function addTask() {
+     if (inputTask.value.length > 2 && inputTask.value.length < 256) {
+         let listItem = createNewElement(inputTask.value);
+         task.appendChild(listItem);
+         inputTask.value = "";
+         save();
+     } else {
+         inputTask.value = "";
+         alert('To pole musi zawierac wiecej niz 2 znaki i mniej niz 256 znaki');
+     }
+ }
 
-(function() {
-    document.querySelector('input').addEventListener('keydown', function(e) {
-        if (e.keyCode === 13) {
-                let listItem = createNewElement(inputTask.value);
-                task.appendChild(listItem);
-                inputTask.value = "";
-                save();
-        }
-    });
-})();
+ (function() {
+     document.querySelector('input').addEventListener('keydown', function(e) {
+         if (e.keyCode === 13) {
+                 let listItem = createNewElement(inputTask.value);
+                 task.appendChild(listItem);
+                 inputTask.value = "";
+                 save();
+         }
+     });
+ })();
 
-function save() {
+ function save() {
 
-    let taskArr = [];
-    for (let i = 0; i < task.children.length; i++) {
-        taskArr.push(task.children[i].getElementsByTagName('label')[0].innerText);
-    }
+     let taskArr = [];
+     for (let i = 0; i < task.children.length; i++) {
+         taskArr.push(task.children[i].getElementsByTagName('label')[0].innerText);
+     }
 
-    localStorage.removeItem('todo');
-    localStorage.setItem('todo', JSON.stringify({
-        task: taskArr
-    }));
+     localStorage.removeItem('todo');
+     localStorage.setItem('todo', JSON.stringify({
+         task: taskArr
+     }));
 
-}
+ }
 
-function load(){
-    return JSON.parse(localStorage.getItem('todo'));
-}
+ function load(){
+     return JSON.parse(localStorage.getItem('todo'));
+ }
 
-let data=load();
+ let data=load();
 
-for(let i=0; i<data.task.length;i++){
-    let listItem=createNewElement(data.task[i], false);
-    task.appendChild(listItem);
-}
+ for(let i=0; i<data.task.length;i++){
+     let listItem=createNewElement(data.task[i], false);
+     task.appendChild(listItem);
+ }
 
 //====================================================================================================================//
