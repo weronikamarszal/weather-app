@@ -1,14 +1,13 @@
-const api={
-    key:"7a7b4325b0cdbb4e8bc97d4c5138c58d",
-    baseurl:"https://api.openweathermap.org/data/2.5/"
-}
+const api={key:"7a7b4325b0cdbb4e8bc97d4c5138c58d", baseurl:"https://api.openweathermap.org/data/2.5/"}
 const searchbox = document.querySelector('.search-box');
 searchbox.addEventListener('keypress', setQuery);
 var lan;
 var lat;
+
 function setQuery(evt) {
     if(evt.keyCode==13){
         getResults(searchbox.value).then(weather=>{
+            //console.log(searchbox.value);
             if(weather) {
                 lan = weather.coord.lon;
                 lat = weather.coord.lat;
@@ -209,17 +208,29 @@ function createNewElement(task) {
 
 const citiesList = document.getElementsByClassName("changeCity");
 
-let sendRequest = function() {
-    getResults(citiesList.value).then(weather => {
-        if (weather) {
-            lan = weather.coord.lon;
-            lat = weather.coord.lat;
-            displayResults(weather);
-            getWeather();
-        }
-    });
-}
+// let sendRequest = function() {
+//     for (let i = 0; i < citiesList.length; i++) {
+//         getResults(citiesList[i].value).then(weather => {
+//             if (weather) {
+//                 lan = weather.coord.lon;
+//                 lat = weather.coord.lat;
+//                 displayResults(weather);
+//                 getWeather();
+//             }
+//         });
+//     }
+// }
 
 for (let i = 0; i < citiesList.length; i++) {
-    citiesList[i].addEventListener('click', sendRequest, false);
+    citiesList[i].addEventListener('click', function (e){
+         getResults(citiesList[i].innerText).then(weather => {
+            console.log(citiesList[i].innerText);
+            if (weather) {
+                lan = weather.coord.lon;
+                lat = weather.coord.lat;
+                displayResults(weather);
+                getWeather();
+            }
+        });
+    });
 }
