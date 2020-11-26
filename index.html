@@ -20,8 +20,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <style>
         #mapid {
-        height: 600px;
+            height: 600px;
         }
+
         .chart-container {
             margin: 0 auto;
             width: 800px;
@@ -57,7 +58,8 @@
             <!-----------------WEATHER CARD------------------>
             <div class="col-md-4 text-center">
                 <div class="mt-2">
-                    <input id="city" type="text" name="" autocomplete="off" class="search-box" placeholder="Wyszukaj miasto...">
+                    <input id="city" type="text" name="" autocomplete="off" class="search-box"
+                           placeholder="Wyszukaj miasto...">
                 </div>
 
                 <div class="mt-5">
@@ -119,13 +121,16 @@
 <script src="js/pogoda.js"></script>
 
 
-
 </body>
 <template id="advertisementTemplate">
-    <h4 class="title"></h4>
-    <img class="advert-image">
-    <p class="desc"></p>
-    <p class="more"></p>
+    <div class="tile">
+        <img class="advert-image">
+        <div class="details">
+            <span class="title"></span>
+            <span class="desc info"></span>
+<!--            <span class="more"></span>-->
+        </div>
+    </div>
 
 </template>
 </html>
