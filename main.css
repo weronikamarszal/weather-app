@@ -2,3 +2,7 @@
     display: flex;
     justify-content: space-between;
 }
+
+.navbar-actions > * {
+    margin-left: 1em;
+}
