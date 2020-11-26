@@ -154,9 +154,10 @@ function createNewElement(task) {
     let listItem = document.createElement('li');
     listItem.className = "list-group-item listElement";
     let label = document.createElement('label');
+    label.className = "changeCity";
     label.innerText = task;
     let deleteButton = document.createElement('button');
-    deleteButton.className = "btn btn-primary btn-sm";
+    deleteButton.className = "btn btn-primary btn-sm deleteButton";
     deleteButton.innerText = "Delete";
     deleteButton.onclick = function () {
         deleteButton.parentElement.remove()
@@ -205,3 +206,20 @@ function createNewElement(task) {
  }
 
 //====================================================================================================================//
+
+const citiesList = document.getElementsByClassName("changeCity");
+
+let sendRequest = function() {
+    getResults(citiesList.value).then(weather => {
+        if (weather) {
+            lan = weather.coord.lon;
+            lat = weather.coord.lat;
+            displayResults(weather);
+            getWeather();
+        }
+    });
+}
+
+for (let i = 0; i < citiesList.length; i++) {
+    citiesList[i].addEventListener('click', sendRequest, false);
+}
