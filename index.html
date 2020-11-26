@@ -40,12 +40,14 @@
         <img src="img/icon.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         What's the weather?
     </a>
-    <a class="col-1">
-        Zaloguj
-    </a>
-    <a class="col-1">
-        Zarejestruj
-    </a>
+    <div class="navbar-actions">
+        <a href="login.html">
+            Zaloguj
+        </a>
+        <a href="login.html">
+            Zarejestruj
+        </a>
+    </div>
 </nav>
 
 <!--===============================================MAIN==============================================================-->
@@ -56,7 +58,7 @@
         </div>
         <div class="col-md-10 row no-gutters">
             <!-----------------WEATHER CARD------------------>
-            <div class="col-md-4 text-center">
+            <div class="col-md-4 text-center search-city">
                 <div class="mt-2">
                     <input id="city" type="text" name="" autocomplete="off" class="search-box"
                            placeholder="Wyszukaj miasto...">
@@ -128,7 +130,7 @@
         <div class="details">
             <span class="title"></span>
             <span class="desc info"></span>
-<!--            <span class="more"></span>-->
+            <!--            <span class="more"></span>-->
         </div>
     </div>
 

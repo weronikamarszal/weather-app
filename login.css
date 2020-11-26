@@ -1,0 +1,15 @@
+.login-field {
+    width: 100%;
+    margin: .25em 0;
+}
+
+.additional-actions {
+    justify-content: space-between;
+}
+
+.login-container {
+    padding: 1em !important;
+    border: 2px solid #0052ab;
+    border-radius: 6px;
+    background-color: #B3D6F6;
+}
