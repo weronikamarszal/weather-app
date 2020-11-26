@@ -3,6 +3,16 @@
     justify-content: space-between;
 }
 
+.changeCity{
+    display: flex;
+    justify-content: left;
+}
+
+.deleteButton {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .navbar-actions > * {
     margin-left: 1em;
 }
