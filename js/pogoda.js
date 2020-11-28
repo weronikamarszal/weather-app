@@ -7,7 +7,6 @@ var lat;
 function setQuery(evt) {
     if(evt.keyCode==13){
         getResults(searchbox.value).then(weather=>{
-            //console.log(searchbox.value);
             if(weather) {
                 lan = weather.coord.lon;
                 lat = weather.coord.lat;
