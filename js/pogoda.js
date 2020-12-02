@@ -47,7 +47,7 @@ function displayResults (weather) {
     var utc = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
     let seconds=weather.timezone;
     utc.setSeconds(utc.getSeconds() + seconds);
-    let date2=dateBuilder(utc);
+    let date2=dateBuilder(utc,false);
 
     date.innerText = date2;
 
@@ -73,20 +73,26 @@ function displayForecast(weathers){
     let arrayDates=[];
     let arrayTemps=[];
     console.log(JSON.stringify(weathers.hourly[1].dt));
-    for(i=0;i<weathers.hourly.length;i++){
+    for(i=0;i<weathers.hourly.length-2;i++){
         let time=weathers.hourly[i].dt;
         let temp=weathers.hourly[i].temp;
         arrayW.push([time,temp]);
         myDate = new Date(1000*time);
         let seconds=weathers.timezone_offset;
         myDate.setSeconds(myDate.getSeconds() + seconds);
-        arrayDates.push(myDate.toString().slice(4,21));
+        let date2=dateBuilder(myDate,true);
+        arrayDates.push(date2);
         arrayTemps.push(temp);
         //console.log(myDate.toString().slice(4,21));
     }
     console.log(arrayDates);
     let citynCountry=document.getElementById("city-country").innerText;
-    var ctx = document.getElementById("myChart");
+    //var ctx = document.getElementById("myChart");
+    var chartContainer=document.getElementById("chartContainer");
+    chartContainer.innerHTML='&nbsp;';
+    $('#chartContainer').append('<canvas id="myChart" ><canvas>');
+    let ctx=$("#myChart").get(0).getContext("2d");
+
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -111,36 +117,65 @@ function displayForecast(weathers){
             },
             scales:{
                 yAxes:[{
+                    display: true,
                     scaleLabel: {
                         display: true,
                         labelString: 'Temperatura w °C',
                         fontSize: 16
+                    },
+                    ticks: {
+                        fontSize: 17
                     }
                 }],
                 xAxes:[{
+                    display: true,
                     scaleLabel: {
                         display: true,
                         labelString: 'Data i godzina',
                         fontSize: 16
+                    },
+                    ticks: {
+                        fontSize: 17
                     }
                 }]
+
             }
         }
+
     });
+    //console.log(config);
+    //var myChart = new Chart(ctx,config );
     console.log(arrayW);
 }
 
-function dateBuilder (d) {
+function dateBuilder (d, num) {
     let months = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
     let days = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"];
+    let daysNum = ["Ndz.", "Pon.", "Wt.", "Śr.", "Czw.", "Pt.", "Sb."];
 
     let day = days[d.getDay()];
+    let day2=daysNum[d.getDay()];
     let date = d.getDate();
     let month = months[d.getMonth()];
+    let monthNum=d.getMonth();
     let year = d.getFullYear();
-    let hours=d.getHours();
-    let minutes=d.getMinutes();
-    return `${day}, ${date} ${month} ${year}, ${hours}:${minutes}`;
+    let hoursNum=d.getHours();
+    let hours=d.getHours().toString();
+    if(hoursNum<=9){
+        hours="0"+hours;
+    }
+    let minutesNum=d.getMinutes();
+    let minutes=d.getMinutes().toString();
+    if(minutesNum<=9){
+        minutes="0"+minutes;
+    }
+    if(num==false){
+        return `${day}, ${date} ${month} ${year}, ${hours}:${minutes}`;
+    }
+    if(num==true){
+        return `${day2} ${date}.${monthNum}, ${hours}:${minutes}`;
+    }
+
 }
 
 //======================================ZAPISYWANIE MIAST DO LOCAL STORAGE============================================//
