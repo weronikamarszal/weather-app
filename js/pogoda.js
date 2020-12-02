@@ -157,7 +157,7 @@ function dateBuilder (d, num) {
     let day2=daysNum[d.getDay()];
     let date = d.getDate();
     let month = months[d.getMonth()];
-    let monthNum=d.getMonth();
+    let monthNum=d.getMonth()+1;
     let year = d.getFullYear();
     let hoursNum=d.getHours();
     let hours=d.getHours().toString();
