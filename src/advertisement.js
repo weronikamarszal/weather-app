@@ -74,13 +74,6 @@ function createAdvertisementHTML(advertisement) {
 
     let image = element.querySelector(".advert-image");
     image.src = advertisement.image;
-    let more =element.querySelector(".more");
-    image.addEventListener("mouseenter", function (event) {
-         more.innerText=advertisement.more;
-    })
-    image.addEventListener("mouseleave", function (event) {
-        more.innerText="";
-    })
 
     let desc = element.querySelector(".desc");
     desc.innerText = advertisement.description;
