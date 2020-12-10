@@ -1,3 +1,7 @@
 .backColor {
     background: #FAFBFE;
 }
+
+.table-row{
+    cursor:pointer;
+}

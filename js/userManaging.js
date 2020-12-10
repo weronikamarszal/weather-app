@@ -1,3 +1,3 @@
-$('.table > tbody > tr').click(function() {
-alert("hello")
-});
+function clickTableRaw() {
+    alert("works");
+}

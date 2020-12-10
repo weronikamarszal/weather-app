@@ -6,6 +6,7 @@
 .changeCity{
     display: flex;
     justify-content: left;
+    cursor:pointer;
 }
 
 .deleteButton {

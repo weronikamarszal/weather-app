@@ -201,18 +201,6 @@ function createNewElement(task) {
     return listItem;
 }
 
-/*
- (function() {
-     document.querySelector('input').addEventListener('keydown', function(e) {
-         if (e.keyCode === 13) {
-                 let listItem = createNewElement(inputTask.value);
-                 task.appendChild(listItem);
-                 inputTask.value = "";
-                 save();
-         }
-     });
- })();*/
-
  function save() {
 
      let taskArr = [];
@@ -242,20 +230,7 @@ function createNewElement(task) {
 
 const citiesList = document.getElementsByClassName("changeCity");
 
-// let sendRequest = function() {
-//     for (let i = 0; i < citiesList.length; i++) {
-//         getResults(citiesList[i].value).then(weather => {
-//             if (weather) {
-//                 lan = weather.coord.lon;
-//                 lat = weather.coord.lat;
-//                 displayResults(weather);
-//                 getWeather();
-//             }
-//         });
-//     }
-// }
-
-for (let i = 0; i < citiesList.length; i++) {
+ for (let i = 0; i < citiesList.length; i++) {
     citiesList[i].addEventListener('click', function (e){
          getResults(citiesList[i].innerText).then(weather => {
             console.log(citiesList[i].innerText);
@@ -267,4 +242,4 @@ for (let i = 0; i < citiesList.length; i++) {
             }
         });
     });
-}
+ }
