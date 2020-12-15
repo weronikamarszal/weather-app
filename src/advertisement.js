@@ -27,16 +27,16 @@ const Tag = {
 let more = "Lorem ipsum dolor sit amet";
 
 const advertisements = [
-    new Advertisement('Ad1', 1, 'zimno? kup sweter', more, "./img/ads/cold.jpeg", null, Tag.COLD),
+    new Advertisement('Ad1', 1, 'zimno? kup sweter', more, "./img/ads/cold.jpg", null, Tag.COLD),
     new Advertisement('Ad2', 2, 'ciepło? zjedz loda', more, "./img/ads/hot.jpeg", null, Tag.HOT),
-    new Advertisement('Ad3', 3, 'zimno? brrrrrrr', more, "./img/ads/cold.jpeg", null, Tag.COLD),
-    new Advertisement('Ad4', 4, 'ale mróz!', more, "./img/ads/cold.jpeg", null, Tag.COLD),
-    new Advertisement('Ad5', 5, 'kap kap kap', more, "./img/ads/rain.jpeg", null, Tag.RAIN),
-    new Advertisement('Ad6', 6, 'pada? kup parasol', more, "./img/ads/rain.jpeg", null, Tag.RAIN),
+    new Advertisement('Ad3', 3, 'zimno? brrrrrrr', more, "./img/ads/cold.jpg", null, Tag.COLD),
+    new Advertisement('Ad4', 4, 'ale mróz!', more, "./img/ads/cold.jpg", null, Tag.COLD),
+    new Advertisement('Ad5', 5, 'kap kap kap', more, "./img/ads/rain.jpg", null, Tag.RAIN),
+    new Advertisement('Ad6', 6, 'pada? kup parasol', more, "./img/ads/rain.jpg", null, Tag.RAIN),
     new Advertisement('Ad7', 7, 'zapraszam na lody', more, "./img/ads/hot.jpeg", null, Tag.HOT),
     new Advertisement('Ad8', 8, 'daj się ochłodzić', more, "./img/ads/hot.jpeg", null, Tag.HOT),
-    new Advertisement('Ad9', 9, 'deszcz za oknami', more, "./img/ads/rain.jpeg", null, Tag.RAIN),
-    new Advertisement('Ad10', 10, 'zmokłeś?', more, "./img/ads/rain.jpeg", null, Tag.RAIN),
+    new Advertisement('Ad9', 9, 'deszcz za oknami', more, "./img/ads/rain.jpg", null, Tag.RAIN),
+    new Advertisement('Ad10', 10, 'zmokłeś?', more, "./img/ads/rain.jpg", null, Tag.RAIN),
 ];
 
 function getTag(weather) {

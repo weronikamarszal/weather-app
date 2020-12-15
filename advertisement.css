@@ -1,10 +1,15 @@
 .advertisement img {
   width: 100%;
+  text-align: center;
+  display: block;
+}
+
+.tile {
+  width: 100%;
 }
 
 .tile {
   display: inline-block;
-  margin: 10px;
   text-align: left;
   opacity: 0.99;
   overflow: hidden;
