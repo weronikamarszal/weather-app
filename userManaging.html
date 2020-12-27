@@ -40,29 +40,29 @@
             </div>
 
             <div class="mt-5">
-                <table class="table table-hover table-sm">
+                <table id="table" class="table table-hover table-sm">
                 <thead>
                 <tr class="table-row">
-                    <th scope="col">id</th>
-                    <th scope="col">username</th>
-                    <th scope="col">name</th>
-                    <th scope="col">e-mail</th>
+                    <th data-field="id" scope="col">id</th>
+                    <th data-field="username" scope="col">username</th>
+                    <th data-field="name" scope="col">name</th>
+                    <th data-field="e-mail" scope="col">e-mail</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="table-row" onclick="clickTableRaw()">
+                <tr id="1" class="table-row" onclick="clickTableRaw()">
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>@mdo</td>
                 </tr>
-                <tr class="table-row" onclick="clickTableRaw()">
+                <tr id="2" class="table-row" onclick="clickTableRaw()">
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>Thornton</td>
                     <td>@fat</td>
                 </tr>
-                <tr class="table-row" onclick="clickTableRaw()">
+                <tr id="3" class="table-row" onclick="clickTableRaw()">
                     <th scope="row">3</th>
                     <td>Larry</td>
                     <td>the Bird</td>
