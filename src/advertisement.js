@@ -38,6 +38,7 @@ const advertisements = [
     new Advertisement('Ad9', 9, 'deszcz za oknami', more, "./img/ads/rain.jpg", null, Tag.RAIN),
     new Advertisement('Ad10', 10, 'zmokłeś?', more, "./img/ads/rain.jpg", null, Tag.RAIN),
 ];
+console.log(JSON.stringify(advertisements))
 
 function getTag(weather) {
     let tags = [];

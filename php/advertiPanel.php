@@ -1,3 +1,4 @@
+<?php?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <title>Admin's ad panel</title>
 
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../main.css">
     <style>
         #trashImg{
             height:10%;
@@ -28,8 +29,10 @@
 <!--===============================================HEADER============================================================-->
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#" style="flex:1">
-        <img src="img/icon.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
-        What's the weather?
+        <img src="../img/icon.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+        <?php
+echo "What's the weather?"
+?>
     </a>
     <div class="navbar-actions">
         <a href="">
@@ -63,7 +66,20 @@
         </tr>
         </thead>
         <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>X</td>
+            <td>X</td>
+            <td>X
+            </td>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius orci at sem sodales, vel</td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+            <td><img id="trashImg" src="../img/delete.png" onclick="myScript()"></td>
+            <td><img id="editImg" src="../img/edit.png" onclick="myScript()"></td>
 
+        </tr>
         </tbody>
     </table>
 
@@ -75,7 +91,7 @@
     <p> icons made by <a href="https://www.flaticon.com">flaticon</a></p>
 </footer>
 
-<script src="js/adPanel.js"></script>
+<script src="../js/adPanel.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
