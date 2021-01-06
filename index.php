@@ -1,3 +1,7 @@
+<?php
+    session_save_path("E:/studia/Rok 3/Projekt zespołowy/Laboratoria/test2/tmp");
+    session_start();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -43,10 +47,16 @@
         What's the weather?
     </a>
     <div class="navbar-actions">
-        <a href="login.html">
-            Zaloguj
-        </a>
-        <a href="registration.html">
+        <?php
+        if(isset($_SESSION["userid"])){
+            echo "<p>Witaj!</p>";
+            echo "<a href='logout.php'>Wyloguj</a>";
+        }
+        else{
+            echo "<a href='login.php'>Zaloguj</a>";
+        }
+        ?>
+        <a href="registration2.php">
             Zarejestruj
         </a>
     </div>

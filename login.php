@@ -18,7 +18,7 @@
         What's the weather?
     </a>
 
-    <a href="index.html">
+    <a href="index.php">
         Strona główna
     </a>
 </nav>
@@ -27,26 +27,36 @@
     <div class="row no-gutters">
         <div class="col-md-3"></div>
         <div class="col-md-6 login-container">
+            <form action="login2.php" method="post">
             <div class="row no-gutters">
                 <div class="col-12 login">
                     <h4>Logowanie</h4>
                     <div class="mt-2">
                         <div>
-                            <input class="login-field" id="userName" type="text" autocomplete="off"
-                                    placeholder="Email"></div>
+                            <input class="login-field" name="userName" type="text" autocomplete="off"
+                                    placeholder="Nazwa użytkownika"></div>
                         <div>
-                            <input class="login-field" id="password" type="password" autocomplete="off"
+                            <input class="login-field" name="password" type="password" autocomplete="off"
                                     placeholder="Hasło"></div>
-                        <button class="login-field btn-primary" id="login">Zaloguj się</button>
+                        <button type="submit" name="submit" class="login-field btn-primary" id="login">Zaloguj się</button>
                     </div>
                 </div>
             </div>
             <div class="row no-gutters additional-actions">
                 <a href="remindPassword.html" id="forget">Zapomniałeś hasła?</a>
-                <a href="registration.html" id="registration">Zarejestruj się</a>
+                <a href="registration2.php" id="registration">Zarejestruj się</a>
             </div>
+           <!-- <button type="submit" name="submit">Zaloguj się</button>-->
+            </form>
         </div>
         <div class="col-md-3"></div>
+        <?php
+        if(isset($_GET["error"])){
+            if($_GET["error"]=="emptyinput"){
+                echo "<p> Wypełnij wszystkie pola!</p>";
+            }
+        }
+        ?>
     </div>
 </div>
 

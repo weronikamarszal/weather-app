@@ -18,7 +18,7 @@
         What's the weather?
     </a>
 
-    <a href="index.html">
+    <a href="index.php">
         Strona główna
     </a>
 </nav>
@@ -27,42 +27,52 @@
     <div class="row no-gutters">
         <div class="col-md-3"></div>
         <div class="col-md-6 login-container">
+            <form action="registration.php" method="post">
             <div class="row no-gutters">
                 <div class="col-12 login">
                     <h4>Zarejestruj się</h4>
                     <div class="mt-2">
                         <div>
-                            <input class="login-field" id="userName" type="text" autocomplete="off"
+                            <input class="login-field" name="userName" type="text" autocomplete="off"
                                    placeholder="Twoja nazwa użytkownika">
                         </div>
                         <div>
-                            <input class="login-field" id="name" type="text" autocomplete="off"
+                            <input class="login-field" name="name" type="text" autocomplete="off"
                                    placeholder="Twoje imię">
                         </div>
                         <div>
-                            <input class="login-field" id="email" type="text" autocomplete="off"
+                            <input class="login-field" name="email" type="text" autocomplete="off"
                                    placeholder="Twój ares email">
                         </div>
                         <div>
-                            <input class="login-field" id="password" type="password" autocomplete="off"
+                            <input class="login-field" name="password" type="password" autocomplete="off"
                                    placeholder="Hasło - co najmniej 8 znaków, najlepiej litery, cyfry i znaki specjalne">
                         </div>
                         <div>
-                            <input class="login-field" id="repeatPassword" type="password" autocomplete="off"
+                            <input class="login-field" name="repeatPassword" type="password" autocomplete="off"
                                    placeholder="Powtórz hasło">
                         </div>
-                        <a href="registrationStep2.html" class="login-field btn-primary" id="next">Dalej</a href="">
+                        <a href="registrationStep2.html" class="login-field btn-primary" id="next">Dalej</a>
                     </div>
                 </div>
             </div>
             <div class="row no-gutters additional-actions">
-                <a href="login.html" id="forget">Mam już konto, zaloguj</a>
+                <a href="login.php" id="forget">Mam już konto, zaloguj</a>
             </div>
+                <button type="submit" name="submit">Zarejestruj się</button>
+            </form>
         </div>
         <div class="col-md-3"></div>
     </div>
 </div>
 
+<?php
+/*if (isset($_GET["error"])){
+    if($_GET["error"]=="emptyinput"){
+    echo "<p> Wypełnij wszystkie pola!</p>";
+    }
+}
+*/?>
 
 </body>
 </html>
