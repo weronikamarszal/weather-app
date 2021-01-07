@@ -94,8 +94,10 @@ function loginUser($conn,$userName,$password){
         exit();
     }
     else if($checkPwd===true){
+        session_save_path(getcwd() . "/tmp");
         session_start();
         $_SESSION["username"]=$uidExists["userName"];
+        $_SESSION["firstname"]=$uidExists["userFirstName"];
         $_SESSION["userid"]=$uidExists["userId"];
         header("location: /test2/index.php");
         exit();

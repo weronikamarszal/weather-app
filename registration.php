@@ -14,19 +14,19 @@ if (isset($_POST["submit"])){
         exit();
     }
     if(invalidUid($userName)!==false){
-        header("location: /test2/index.php?error=invaliduid");
+        header("location: /test2/registration2.php?error=invaliduid");
         exit();
     }
     if(invalidEmail($email)!==false){
-        header("location: /test2/index.php?error=invalidemail");
+        header("location: /test2/registration2.php?error=invalidemail");
         exit();
     }
     if(pwdMatch($password,$repeatPassword)!==false){
-        header("location: /test2/index.php?error=passwordsdiffer");
+        header("location: /test2/registration2.php?error=passwordsdiffer");
         exit();
     }
     if(uidExists($conn,$userName,$email)!==false){
-        header("location: /test2/index.php?error=usernametaken");
+        header("location: /test2/registration2.php?error=usernametaken");
         exit();
     }
     createUser($conn,$userName,$name,$email,$password);

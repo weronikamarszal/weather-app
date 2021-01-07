@@ -60,19 +60,35 @@
                 <a href="login.php" id="forget">Mam już konto, zaloguj</a>
             </div>
                 <button type="submit" name="submit">Zarejestruj się</button>
+                <?php
+                function alert($msg) {
+                    echo "<script type='text/javascript'>alert('$msg');</script>";
+                }
+                if (isset($_GET["error"])) {
+                    if ($_GET["error"] == "emptyinput") {
+                        echo"<p> Wypełnij wszystkie pola! </p>";
+                    }
+                    else if ($_GET["error"] == "invaliduid") {
+                        echo"<p> Nieprawidłowa nazwa użytkownika! </p>";
+                    }
+                    else if ($_GET["error"] == "invalidemail") {
+                        echo"<p> Nieprawidłowy adres email! </p>";
+                    }
+                    else if ($_GET["error"] == "passwordsdiffer") {
+                        echo"<p> Hasła różnią się! </p>";
+                    }
+                    else if ($_GET["error"] == "usernametaken") {
+                        echo"<p> Email lub nazwa użytkownika zajęte! </p>";
+                    }
+                }
+                ?>
             </form>
         </div>
         <div class="col-md-3"></div>
     </div>
 </div>
 
-<?php
-/*if (isset($_GET["error"])){
-    if($_GET["error"]=="emptyinput"){
-    echo "<p> Wypełnij wszystkie pola!</p>";
-    }
-}
-*/?>
+
 
 </body>
 </html>

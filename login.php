@@ -39,6 +39,22 @@
                             <input class="login-field" name="password" type="password" autocomplete="off"
                                     placeholder="Hasło"></div>
                         <button type="submit" name="submit" class="login-field btn-primary" id="login">Zaloguj się</button>
+                        <?php
+                        function alert($msg) {
+                            echo "<script type='text/javascript'>alert('$msg');</script>";
+                        }
+                        if(isset($_GET["error"])){
+                            if($_GET["error"]=="emptyinput"){
+                                echo"<p> Wypełnij wszystkie pola! </p>";
+                            }
+                            else if ($_GET["error"] == "wrongpassword") {
+                                echo"<p> Nieprawidłowe hasło! </p>";
+                            }
+                            else if ($_GET["error"] == "wronglogin") {
+                                echo"<p> Nieprawidłowa nazwa użytkownika! </p>";
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -50,13 +66,7 @@
             </form>
         </div>
         <div class="col-md-3"></div>
-        <?php
-        if(isset($_GET["error"])){
-            if($_GET["error"]=="emptyinput"){
-                echo "<p> Wypełnij wszystkie pola!</p>";
-            }
-        }
-        ?>
+
     </div>
 </div>
 

@@ -1,6 +1,9 @@
 <?php
-    session_save_path("E:/studia/Rok 3/Projekt zespołowy/Laboratoria/test2/tmp");
+    session_save_path(getcwd() . "/tmp");
     session_start();
+    if(isset($_SESSION["userid"])){
+        $name=$_SESSION["firstname"];
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -46,10 +49,14 @@
         <img src="img/icon.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         What's the weather?
     </a>
+    <?php
+    if(isset($_SESSION["userid"])){
+        echo "<p>Witaj, $name  </p>";
+    }
+    ?>
     <div class="navbar-actions">
         <?php
         if(isset($_SESSION["userid"])){
-            echo "<p>Witaj!</p>";
             echo "<a href='logout.php'>Wyloguj</a>";
         }
         else{
