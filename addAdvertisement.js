@@ -2,10 +2,10 @@ document.getElementById("addAdvertisementForm").addEventListener('submit', (even
     event.preventDefault()
     const formValue = new FormData(event.target)
 
-    fetch('http://localhost/weather-app/php/addAdvertisement.php', { method: 'POST', body: formValue })
-        .then(data => data.json())
+    fetch('/weather-app/php/addAdvertisement.php', { method: 'POST', body: formValue })
+        .then(data => data.text())
         .then(data => {
-            console.log(data);
+            location.replace('/weather-app/advertPanel.html')
         })
 
 });
