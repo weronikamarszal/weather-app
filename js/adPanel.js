@@ -2,15 +2,32 @@ function myScript() {
     window.alert("klepnięte");
 }
 
+function changeLocation() {
+    location.replace('/weather-app/addAdvertisement.html');
+}
+
 function addAd() {
 
 }
 
-fetch('http://localhost/weather-app/php/getAdvertisements.php')
-    .then(response => response.json())
-    .then(data => {
-        display(data)
-    })
+function deleteAd(id) {
+    fetch(SERVER + 'weather-app/php/deleteAdvertisement.php?id=' + id)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            getDataFromDB();
+        })
+}
+
+function getDataFromDB() {
+    fetch(SERVER + 'weather-app/php/getAdvertisements.php')
+        .then(response => response.json())
+        .then(data => {
+            display(data)
+        })
+}
+
+getDataFromDB()
 
 function jsonToHtml(json) {
     let result = [];
@@ -23,6 +40,9 @@ function jsonToHtml(json) {
 <td>${i.image}</td>
 <td>${i.link}</td>
 <td>${i.tag}</td>
+<td></td>
+<td><span class="fa fa-trash clickable" onclick="deleteAd(${i.id})"></span></td>
+<td><span class="fa fa-pencil clickable"  onclick="myScript()"></span></td>
 `
         result.push(tr);
     })
@@ -31,5 +51,6 @@ function jsonToHtml(json) {
 
 function display(data) {
     let tableBody = document.querySelector("tbody");
+    tableBody.innerHTML='';
     tableBody.append(...jsonToHtml(data));
 }
