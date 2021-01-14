@@ -9,28 +9,30 @@ if (isset($_POST["submit"])){
     require_once 'databaseConnection.php';
     require_once 'functions.php';
 
+
     if(emptyInputSignup($userName,$name,$email,$password,$repeatPassword)!==false){
-        header("location: /test2/registration2.php?error=emptyinput");
+
+        header("location: ./registration2.php?error=emptyinput");
         exit();
     }
     if(invalidUid($userName)!==false){
-        header("location: /test2/registration2.php?error=invaliduid");
+        header("location: ./registration2.php?error=invaliduid");
         exit();
     }
     if(invalidEmail($email)!==false){
-        header("location: /test2/registration2.php?error=invalidemail");
+        header("location: ./registration2.php?error=invalidemail");
         exit();
     }
     if(pwdMatch($password,$repeatPassword)!==false){
-        header("location: /test2/registration2.php?error=passwordsdiffer");
+        header("location: ./registration2.php?error=passwordsdiffer");
         exit();
     }
     if(uidExists($conn,$userName,$email)!==false){
-        header("location: /test2/registration2.php?error=usernametaken");
+        header("location: ./registration2.php?error=usernametaken");
         exit();
     }
     createUser($conn,$userName,$name,$email,$password);
 }
 else{
-    header("location: /test2/login.php");
+    header("location: ./login.php");
 }

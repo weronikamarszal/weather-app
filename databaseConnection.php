@@ -6,10 +6,7 @@ $dbPassword="";
 $dbName="baza";
 
 
-try {
-    $dbh = new PDO("mysql:host=$serverName;dbname=$dbName", $dbUsername, $dbPassword);
-
-} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
+$conn=mysqli_connect($serverName,$dbUsername,$dbPassword,$dbName);
+if(!$conn){
+    die("Połączenie nie udało się: " . mysqli_connect_error());
 }

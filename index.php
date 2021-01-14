@@ -3,6 +3,7 @@
     session_start();
     if(isset($_SESSION["userid"])){
         $name=$_SESSION["firstname"];
+        $role=$_SESSION["role"];
     }
 ?>
 <!doctype html>
@@ -51,21 +52,21 @@
     </a>
     <?php
     if(isset($_SESSION["userid"])){
-        echo "<p>Witaj, $name  </p>";
+        echo "<p>Witaj, $name </p>";
     }
     ?>
     <div class="navbar-actions">
         <?php
         if(isset($_SESSION["userid"])){
-            echo "<a href='logout.php'>Wyloguj</a>";
+            echo "<a href='userPanel-data.html'>Panel użytkownika</a>";
+            echo "<a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a>";
         }
         else{
             echo "<a href='login.php'>Zaloguj</a>";
+            echo "<a href='registration2.php'>Zarejestruj się</a>";
         }
         ?>
-        <a href="registration2.php">
-            Zarejestruj
-        </a>
+
     </div>
 </nav>
 

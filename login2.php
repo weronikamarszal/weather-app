@@ -6,12 +6,12 @@ if (isset($_POST["submit"])) {
     require_once 'databaseConnection.php';
     require_once 'functions.php';
     if(emptyInputLogin($userName,$password)!==false){
-        header("location: /test2/login.php?error=emptyinput");
+        header("location: ./login.php?error=emptyinput");
         exit();
     }
     loginUser($conn,$userName,$password);
 }
 else{
-    header("location: /test2/login.php");
+    header("location: ./login.php");
     exit();
 }
