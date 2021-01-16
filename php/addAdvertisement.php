@@ -1,18 +1,16 @@
 <?php
-require_once __DIR__ . '/../databaseConnection.php';
-echo json_encode($_POST);
-
+require_once __DIR__ . '/../PDO_databaseConnection.php';
 
 global $dbh;
-$adverts = [];
 
 try {
-    $stmt = $dbh->prepare('INSERT INTO advertisements(name, description, more, picture, link, tag ) VALUES(:name, :description, :more, :image, :link, :tag)');
-//    echo var_dump($stmt);
+    $stmt = $dbh->prepare('INSERT INTO advertisements(name, description, more, picture, link, tag ) VALUES(:name, :description, :more, :picture, :link, :tag)');
     $stmt->execute($_POST);
     $adverts = $stmt->fetchAll();
+    echo json_encode($adverts);
 } catch (Exception $e) {
-    throw new Exception($e->getMessage());
+    echo $e->getMessage();
+//    throw new Exception($e->getMessage());
 }
 
 ?>

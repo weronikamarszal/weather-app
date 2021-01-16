@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../databaseConnection.php';
+require_once __DIR__ . '/../PDO_databaseConnection.php';
 
 
 global $dbh;

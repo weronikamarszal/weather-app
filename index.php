@@ -138,6 +138,7 @@
         crossorigin="anonymous"></script>
 <script src="src/map.js"></script>
 <script src="src/advertisement.js"></script>
+<script src="js/server.js"></script>
 <script src="js/pogoda.js"></script>
 
 
