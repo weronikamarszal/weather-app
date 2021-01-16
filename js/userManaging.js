@@ -1,16 +1,14 @@
-// let $table = $('#table')
-let myTab = document.getElementById('table');
+$(document).ready(function (){
+    $('table tbody tr').click(function (){
+        let dataArray = ($(this).text()).split("\n");
 
-function clickTableRaw() {
-//     // alert(JSON.stringify($table.bootstrapTable('getData')));
-//     let objCells = myTab.rows.item(1).cells;
-//     alert(objCells.item(1).innerHTML);
-}
+        let id = $.trim(dataArray["1"]);
+        let username = $.trim(dataArray["2"]);
+        let firstName = $.trim(dataArray["3"]);
+        let email = $.trim(dataArray["4"]);
 
-$(document).ready(function() {
-    $(document).on("click", "#table tbody tr", function() {
-        var data = $(this).closest('tr').attr('id');
-        alert(data);
+
     });
 });
+
 

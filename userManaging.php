@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="userManaging.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -39,45 +38,41 @@
                 </div>
             </div>
 
-            <div class="mt-5">
-                <table id="table" class="table table-hover table-sm">
-                <thead>
-                <tr class="table-row">
-                    <th data-field="id" scope="col">id</th>
-                    <th data-field="username" scope="col">username</th>
-                    <th data-field="name" scope="col">name</th>
-                    <th data-field="e-mail" scope="col">e-mail</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr id="1" class="table-row" onclick="clickTableRaw()">
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr id="2" class="table-row" onclick="clickTableRaw()">
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr id="3" class="table-row" onclick="clickTableRaw()">
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-                </tbody>
-                </table>
-            </div>
+<?php
+require_once 'databaseConnection.php';
 
+    $query = "SELECT * FROM users";
+    $result = mysqli_query($conn, $query) or die( mysqli_error($conn) );
+
+    for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
+    ?>
+
+            <div class="mt-5" style="overflow: auto; height:50%">
+                <table id="table" class="table table-hover table-sm">
+                    <thead>
+                    <tr class="table-row">
+                        <th data-field="id" scope="col">id</th>
+                        <th data-field="username" scope="col">username</th>
+                        <th data-field="name" scope="col">name</th>
+                        <th data-field="e-mail" scope="col">e-mail</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($data as $dbUsername) { ?>
+                        <tr class="table-row"">
+                            <td><?= $dbUsername['userId'] ?></td>
+                            <td><?= $dbUsername['userName'] ?></td>
+                            <td><?= $dbUsername['userFirstName'] ?></td>
+                            <td><?= $dbUsername['userEmail'] ?></td>
+                            <td>hello</td>
+                        </tr>
+                    <?php }?>
+                    </tbody>
+                    </table>
+            </div>
         </div>
         <div class="col-md-1"></div>
     </div>
 </div>
-
-
 <script src="js/userManaging.js"></script>
 </body>
-</html>
