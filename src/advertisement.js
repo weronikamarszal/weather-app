@@ -4,7 +4,7 @@ class Advertisement {
         id,
         description,
         more,
-        image,
+        picture,
         link,
         tag,
     ) {
@@ -12,7 +12,7 @@ class Advertisement {
         this.id = id;
         this.description = description;
         this.more = more;
-        this.image = image;
+        this.picture = picture;
         this.link = link;
         this.tag = tag;
     }
@@ -60,10 +60,20 @@ function getTag(weather) {
 
 }
 
-function ad(tag) {
-    let filtered = advertisements.filter((i) => {
+function getDataFromDB() {
+    return fetch(SERVER + 'weather-app/php/getAdvertisements.php')
+        .then((response) => {
+            return response.json()
+        })
+}
+
+function ad(tag, adFromDB) {
+    let filtered = adFromDB.filter((i) => {
         return i.tag === tag;
     });
+    if (filtered.length ===0){
+        console.error(`brak reklamy z odpowiednim tagiem(${tag} )`)
+    }
     let randomIndex = Math.floor(Math.random() * filtered.length);
     return filtered[randomIndex];
 }
@@ -73,25 +83,26 @@ function createAdvertisementHTML(advertisement) {
     let elementInner = document.querySelector("#advertisementTemplate").content.cloneNode(true);
     element.append(elementInner);
 
-    let image = element.querySelector(".advert-image");
-    image.src = advertisement.image;
+    let picture = element.querySelector(".advert-image");
+    picture.src = advertisement.picture;
 
     let desc = element.querySelector(".desc");
     desc.innerText = advertisement.description;
     let title = element.querySelector(".title");
     title.innerText = advertisement.name;
-
-
     return element;
 }
 
 function displayAd(weather) {
     let adElements = document.querySelectorAll(".advertisement");
-    adElements.forEach((i) => {
-        if (i.children[0]) {
-            i.children[0].remove();
-        }
-        i.append(createAdvertisementHTML(ad(getTag(weather))));
-    })
+    getDataFromDB()
+        .then((x) => {
+            adElements.forEach((i) => {
+                if (i.children[0]) {
+                    i.children[0].remove();
+                }
+                i.append(createAdvertisementHTML(ad(getTag(weather), x)));
+            })
+        });
 }
 
