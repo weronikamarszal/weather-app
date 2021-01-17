@@ -32,10 +32,7 @@
             </div>
 
             <div class="input-group mb-3 mt-3">
-                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="User's username/name/e-mail" aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button" id="findUserButton">Find</button>
-                </div>
+                <input type="text" id="search-text" onkeyup="tableSearch()" class="form-control" placeholder="Find user by id/username/name/e-mail" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             </div>
 
 <?php
@@ -55,6 +52,7 @@ require_once 'databaseConnection.php';
                         <th data-field="username" scope="col">username</th>
                         <th data-field="name" scope="col">name</th>
                         <th data-field="e-mail" scope="col">e-mail</th>
+                        <th data-field="block" scope="col">blocking</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -64,7 +62,7 @@ require_once 'databaseConnection.php';
                             <td><?= $dbUsername['userName'] ?></td>
                             <td><?= $dbUsername['userFirstName'] ?></td>
                             <td><?= $dbUsername['userEmail'] ?></td>
-                            <td>hello</td>
+                            <td><a href='/weather-app/deletelist.php?id=<?= $dbUsername['userId'] ?>'>Block user</a></td>
                         </tr>
                     <?php }?>
                     </tbody>
