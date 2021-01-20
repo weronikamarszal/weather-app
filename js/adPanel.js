@@ -37,7 +37,7 @@ function jsonToHtml(json) {
 <td>${i.name}</td>
 <td>${i.description}</td>
 <td>${i.more}</td>
-<td>${i.image}</td>
+<td>${i.picture}</td>
 <td>${i.link}</td>
 <td>${i.tag}</td>
 <td></td>

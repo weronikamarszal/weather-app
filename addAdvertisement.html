@@ -51,7 +51,7 @@
                                    placeholder="Więcej">
                         </div>
                         <div>
-                            <input class="login-field" name="image" type="text" autocomplete="off"
+                            <input class="login-field" name="picture" type="text" autocomplete="off"
                                    placeholder="Zdjęcie">
                         </div>
                         <div>
@@ -59,8 +59,13 @@
                                    placeholder="Link">
                         </div>
                         <div>
-                            <input class="login-field" name="tag" type="text" autocomplete="off"
-                                   placeholder="Tag">
+                            <select required name="tag" class="login-field" autocomplete="off"
+                                    >
+                                <option disabled selected>Tag</option>
+                                <option value="COLD">COLD</option>
+                                <option value="HOT">HOT</option>
+                                <option value="RAIN">RAIN</option>
+                            </select>
                         </div>
                         <div>
                             <input type="submit"/>

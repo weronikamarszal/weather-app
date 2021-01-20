@@ -1,16 +1,21 @@
-// let $table = $('#table')
-let myTab = document.getElementById('table');
+function tableSearch(){
+    let phrase = document.getElementById('search-text');
+    let table = document.getElementById('table');
+    let regPhrase = new RegExp(phrase.value, 'i');
+    let flag = false;
+    for (let i = 1; i < table.rows.length; i++) {
+        flag = false;
+        for (let j = table.rows[i].cells.length - 1; j >= 0; j--) {
+            flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
+            if (flag) break;
+        }
+        if (flag) {
+            table.rows[i].style.display = "";
+        } else {
+            table.rows[i].style.display = "none";
+        }
 
-function clickTableRaw() {
-//     // alert(JSON.stringify($table.bootstrapTable('getData')));
-//     let objCells = myTab.rows.item(1).cells;
-//     alert(objCells.item(1).innerHTML);
+    }
 }
 
-$(document).ready(function() {
-    $(document).on("click", "#table tbody tr", function() {
-        var data = $(this).closest('tr').attr('id');
-        alert(data);
-    });
-});
 
