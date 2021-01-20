@@ -37,12 +37,6 @@ function pwdMatch($password,$repeatPassword){
     }
     return $result;
 }
-/*$dir=getcwd();
-$loc='location: ';
-$reg='/registration2.php?';
-$log='/login.php';
-$locationErr= $loc . getcwd() . $reg;
-$locationGood=$loc . getcwd() . $log;*/
 function uidExists($conn,$userName,$email){
     $sql="SELECT * FROM users WHERE userName=? OR userEmail=?;";
     $stmt=mysqli_stmt_init($conn);
@@ -74,17 +68,21 @@ function emptyInputLogin($userName,$password){
 }
 
 function createUser($conn,$userName,$name,$email,$password){
-    $sql="INSERT INTO users (userName,userFirstName,userEmail,userPassword) VALUE (?,?,?,?);";
+    $key=md5(time().$userName);
+    $role="user";
+    $sql="INSERT INTO users (userName,userFirstName,userEmail,userPassword,role,vkey) VALUE (?,?,?,?,?,?);";
     $stmt=mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
         header("location: ./index.php?error=stmtfailed");
         exit();
     }
     $hashedPwd=password_hash($password,PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt,"ssss",$userName,$name,$email,$hashedPwd);
+    mysqli_stmt_bind_param($stmt,"ssssss",$userName,$name,$email,$hashedPwd,$role,$key);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ./login.php");
+    setcookie("email",$email);
+    setcookie("vkey",$key);
+    header("location: ./registrationStep2.php");
 }
 
 function loginUser($conn,$userName,$password){
@@ -110,3 +108,4 @@ function loginUser($conn,$userName,$password){
         exit();
     }
 }
+

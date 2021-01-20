@@ -52,20 +52,19 @@
                             <input class="login-field" name="repeatPassword" type="password" autocomplete="off"
                                    placeholder="Powtórz hasło">
                         </div>
-                        <a href="registrationStep2.html" class="login-field btn-primary" id="next">Dalej</a>
+                        <button type='submit' class='login-field btn-primary' name='submit'>Dalej</button>
+                        <!--<a href="registrationStep2.html" class="login-field btn-primary" id="next">Dalej</a>-->
                     </div>
                 </div>
             </div>
             <div class="row no-gutters additional-actions">
                 <a href="login.php" id="forget">Mam już konto, zaloguj</a>
             </div>
-                <button type="submit" name="submit">Zarejestruj się</button>
+                <!--<button type="submit" name="submit">Zarejestruj się</button>-->
                 <?php
-                function alert($msg) {
-                    echo "<script type='text/javascript'>alert('$msg');</script>";
-                }
                 if (isset($_GET["error"])) {
                     if ($_GET["error"] == "emptyinput") {
+
                         echo"<p> Wypełnij wszystkie pola! </p>";
                     }
                     else if ($_GET["error"] == "invaliduid") {

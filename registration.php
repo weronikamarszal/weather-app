@@ -5,7 +5,6 @@ if (isset($_POST["submit"])){
     $email=$_POST["email"];
     $password=$_POST["password"];
     $repeatPassword=$_POST["repeatPassword"];
-
     require_once 'databaseConnection.php';
     require_once 'functions.php';
 
