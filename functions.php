@@ -91,6 +91,11 @@ function loginUser($conn,$userName,$password){
         header("location: ./login.php?error=wronglogin");
         exit();
     }
+    $_SESSION["verified"]=$uidExists["isVerified"];
+    if(!($_SESSION["verified"]==1)){
+        header("location: ./login.php?error=notverifieduser");
+        exit();
+    }
     $pwdHashed=$uidExists["userPassword"];
     $checkPwd=password_verify($password,$pwdHashed);
     if($checkPwd===false){

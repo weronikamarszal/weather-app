@@ -53,6 +53,9 @@
                             else if ($_GET["error"] == "wronglogin") {
                                 echo"<p> Nieprawidłowa nazwa użytkownika! </p>";
                             }
+                            else if ($_GET["error"] == "notverifieduser") {
+                                echo"<p> Użytkownik niezweryfikowany! </p>";
+                            }
                         }
                         ?>
                     </div>
