@@ -1,5 +1,13 @@
-function myScript() {
-    window.alert("klepnięte");
+function editAd(advertisement) {
+    location.replace('/weather-app/addAdvertisement.html' +
+        `?name=${advertisement.name}&`+
+        `description=${advertisement.description}&`+
+        `more=${advertisement.more}&`+
+        `picture=${advertisement.picture}&`+
+        `link=${advertisement.link}&`+
+        `tag=${advertisement.tag}&`+
+        `id=${advertisement.id}`
+    );
 }
 
 function changeLocation() {
@@ -40,10 +48,12 @@ function jsonToHtml(json) {
 <td>${i.picture}</td>
 <td>${i.link}</td>
 <td>${i.tag}</td>
-<td></td>
-<td><span class="fa fa-trash clickable" onclick="deleteAd(${i.id})"></span></td>
-<td><span class="fa fa-pencil clickable"  onclick="myScript()"></span></td>
+<td>${i.likesCount}</td>
+<td><span class="fa fa-trash clickable delete"></span></td>
+<td><span class="fa fa-pencil clickable edit"  ></span></td>
 `
+        tr.querySelector(".delete").addEventListener('click', () => {deleteAd(i.id)})
+        tr.querySelector(".edit").addEventListener('click', () => {editAd(i)})
         result.push(tr);
     })
     return result;
