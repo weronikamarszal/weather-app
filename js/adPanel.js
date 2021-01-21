@@ -40,7 +40,7 @@ function jsonToHtml(json) {
 <td>${i.picture}</td>
 <td>${i.link}</td>
 <td>${i.tag}</td>
-<td></td>
+<td>${i.likesCount}</td>
 <td><span class="fa fa-trash clickable" onclick="deleteAd(${i.id})"></span></td>
 <td><span class="fa fa-pencil clickable"  onclick="myScript()"></span></td>
 `

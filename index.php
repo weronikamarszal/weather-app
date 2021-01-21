@@ -140,6 +140,7 @@
 <script src="src/advertisement.js"></script>
 <script src="js/server.js"></script>
 <script src="js/pogoda.js"></script>
+<script src="src/advertLike.js"></script>
 
 
 </body>
@@ -147,9 +148,9 @@
     <div class="tile">
         <img class="advert-image">
         <div class="details">
+            <button class="like"> LIKE</button>
             <span class="title"></span>
             <span class="desc info"></span>
-            <!--            <span class="more"></span>-->
         </div>
     </div>
 

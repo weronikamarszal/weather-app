@@ -15,6 +15,7 @@ class Advertisement {
         this.picture = picture;
         this.link = link;
         this.tag = tag;
+        this.likesCount = 0;
     }
 }
 
@@ -23,22 +24,6 @@ const Tag = {
     HOT: 'HOT',
     RAIN: 'RAIN',
 }
-
-let more = "Lorem ipsum dolor sit amet";
-
-const advertisements = [
-    new Advertisement('Ad1', 1, 'zimno? kup sweter', more, "./img/ads/cold.jpg", null, Tag.COLD),
-    new Advertisement('Ad2', 2, 'ciepło? zjedz loda', more, "./img/ads/hot.jpeg", null, Tag.HOT),
-    new Advertisement('Ad3', 3, 'zimno? brrrrrrr', more, "./img/ads/cold.jpg", null, Tag.COLD),
-    new Advertisement('Ad4', 4, 'ale mróz!', more, "./img/ads/cold.jpg", null, Tag.COLD),
-    new Advertisement('Ad5', 5, 'kap kap kap', more, "./img/ads/rain.jpg", null, Tag.RAIN),
-    new Advertisement('Ad6', 6, 'pada? kup parasol', more, "./img/ads/rain.jpg", null, Tag.RAIN),
-    new Advertisement('Ad7', 7, 'zapraszam na lody', more, "./img/ads/hot.jpeg", null, Tag.HOT),
-    new Advertisement('Ad8', 8, 'daj się ochłodzić', more, "./img/ads/hot.jpeg", null, Tag.HOT),
-    new Advertisement('Ad9', 9, 'deszcz za oknami', more, "./img/ads/rain.jpg", null, Tag.RAIN),
-    new Advertisement('Ad10', 10, 'zmokłeś?', more, "./img/ads/rain.jpg", null, Tag.RAIN),
-];
-console.log(JSON.stringify(advertisements))
 
 function getTag(weather) {
     let tags = [];
@@ -61,7 +46,7 @@ function getTag(weather) {
 }
 
 function getDataFromDB() {
-    return fetch(SERVER + 'weather-app/php/getAdvertisements.php')
+    return fetch(SERVER + 'weather-app/php/getAdvertisementWithUserLikes.php')
         .then((response) => {
             return response.json()
         })
@@ -88,8 +73,15 @@ function createAdvertisementHTML(advertisement) {
 
     let desc = element.querySelector(".desc");
     desc.innerText = advertisement.description;
+
     let title = element.querySelector(".title");
     title.innerText = advertisement.name;
+
+    let likeButton = element.querySelector(".like");
+    if (advertisement.likesCount > 0) {
+        likeButton.setAttribute("disabled", true);
+    }
+    likeButton.addEventListener("click", () => {fun(advertisement.id)});
     return element;
 }
 
