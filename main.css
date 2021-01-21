@@ -21,3 +21,8 @@
 .clickable {
     cursor: pointer;
 }
+
+.h4TwojeMiasta {
+    display: flex;
+    justify-content: space-around;
+}
