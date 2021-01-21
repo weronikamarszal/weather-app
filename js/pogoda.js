@@ -27,7 +27,7 @@ async function getResults(query) {
     return weather;
 }
 function getWeather(){
-    console.log(lan,lat);
+    // console.log(lan,lat);
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lan}&exclude=daily,minutely&appid=7a7b4325b0cdbb4e8bc97d4c5138c58d&units=metric`)
         .then(weathers=> {
             return weathers.json();
@@ -39,7 +39,7 @@ function displayResults (weather) {
         displayAd(weather);
         setMapLocation(weather.coord);
     }
-    //console.log(weather);
+    // //console.log(weather);
     let city = document.querySelector('.location .city');
     city.innerText = `${weather.name}, ${weather.sys.country}`;
     let now = new Date();
@@ -66,13 +66,13 @@ function displayResults (weather) {
 }
 
 function displayForecast(weathers){
-    console.log(weathers);
-    console.log(lan,lat);
+    // console.log(weathers);
+    // console.log(lan,lat);
     let ex=document.querySelector('.current,.ex')
     let arrayW=[];
     let arrayDates=[];
     let arrayTemps=[];
-    console.log(JSON.stringify(weathers.hourly[1].dt));
+    // console.log(JSON.stringify(weathers.hourly[1].dt));
     for(i=0;i<weathers.hourly.length-2;i++){
         let time=weathers.hourly[i].dt;
         let temp=weathers.hourly[i].temp;
@@ -83,9 +83,9 @@ function displayForecast(weathers){
         let date2=dateBuilder(myDate,true);
         arrayDates.push(date2);
         arrayTemps.push(temp);
-        //console.log(myDate.toString().slice(4,21));
+        // //console.log(myDate.toString().slice(4,21));
     }
-    console.log(arrayDates);
+    // console.log(arrayDates);
     let citynCountry=document.getElementById("city-country").innerText;
     //var ctx = document.getElementById("myChart");
     var chartContainer=document.getElementById("chartContainer");
@@ -143,9 +143,9 @@ function displayForecast(weathers){
         }
 
     });
-    //console.log(config);
+    // //console.log(config);
     //var myChart = new Chart(ctx,config );
-    console.log(arrayW);
+    // console.log(arrayW);
 }
 
 function dateBuilder (d, num) {
@@ -233,7 +233,7 @@ const citiesList = document.getElementsByClassName("changeCity");
  for (let i = 0; i < citiesList.length; i++) {
     citiesList[i].addEventListener('click', function (e){
          getResults(citiesList[i].innerText).then(weather => {
-            console.log(citiesList[i].innerText);
+            // console.log(citiesList[i].innerText);
             if (weather) {
                 lan = weather.coord.lon;
                 lat = weather.coord.lat;

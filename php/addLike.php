@@ -5,12 +5,11 @@ global $dbh;
 
 session_save_path(getcwd() . "/../tmp");
 session_start();
-$userId = $_SESSION["userid"];
+$userId = isset($_SESSION["userid"]) ? $_SESSION["userid"] : null;
 
 try {
     $stmt = $dbh->prepare("INSERT INTO likes (userId, advertisementId) VALUES (:userId, :advertisementId)");
     $tab = ["advertisementId"=>$_GET["advertisementId"], "userId"=>$userId];
-    echo json_encode($tab);
     $stmt->execute($tab);
     $like = $stmt->fetchAll();
     echo json_encode($like);

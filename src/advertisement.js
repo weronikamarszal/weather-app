@@ -50,6 +50,10 @@ function getDataFromDB() {
         .then((response) => {
             return response.json()
         })
+        .catch(res => {
+            console.error(res);
+            return [];
+        })
 }
 
 function ad(tag, adFromDB) {

@@ -25,7 +25,6 @@
             crossorigin=""></script>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="advertisement.css">
-    <script src="js/utils.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <style>
