@@ -42,6 +42,7 @@ else{
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="main.css">
     <title>What's the weather?</title>
+    <link rel="shortcut icon" type="image/jpg" href="img/icon.jpg"/>
 </head>
 <body>
 

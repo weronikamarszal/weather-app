@@ -16,7 +16,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <title>What's the weather?</title>
-
+    <link rel="shortcut icon" type="image/jpg" href="img/icon.jpg"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
           crossorigin=""/>
@@ -58,7 +58,7 @@
     <div class="navbar-actions">
         <?php
         if(isset($_SESSION["userid"])){
-            echo "<a href='userPanel-data.html'>Panel użytkownika</a>";
+            echo "<a href='userPanel-data.php'>Panel użytkownika</a>";
             echo "<a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a>";
         }
         else{
