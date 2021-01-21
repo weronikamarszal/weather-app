@@ -107,7 +107,7 @@
 
             <!-----------------CITIES CARD------------------->
             <div class="col-md-2">
-                <h4>Twoje Miasta</h4>
+                <h4 class="h4TwojeMiasta">Twoje Miasta</h4>
                 <ul class="list-group list-group-flush" id="cities">
                 </ul>
             </div>

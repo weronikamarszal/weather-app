@@ -3,21 +3,26 @@ const searchbox = document.querySelector('.search-box');
 searchbox.addEventListener('keypress', setQuery);
 var lan;
 var lat;
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
 
 function setQuery(evt) {
-    if(evt.keyCode==13){
-        getResults(searchbox.value).then(weather=>{
-            if(weather) {
+    if(evt.keyCode==13) {
+        getResults(searchbox.value).then(weather => {
+            if (weather) {
                 lan = weather.coord.lon;
                 lat = weather.coord.lat;
                 displayResults(weather);
                 getWeather();
+                if (JSON.parse(localStorage.getItem('todo')).task.includes(searchbox.value.toLowerCase().capitalize()) === false) {
+                    let listItem = createNewElement(searchbox.value);
+                    task.appendChild(listItem);
+                    searchbox.value = "";
+                    save();
+                }
             }
         });
-        let listItem = createNewElement(searchbox.value);
-        task.appendChild(listItem);
-        searchbox.value = "";
-        save();
     }
 }
 
@@ -188,7 +193,7 @@ function createNewElement(task) {
     listItem.className = "list-group-item listElement";
     let label = document.createElement('label');
     label.className = "changeCity";
-    label.innerText = task;
+    label.innerText = task.toLowerCase().capitalize();
     let deleteButton = document.createElement('button');
     deleteButton.className = "btn btn-primary btn-sm deleteButton";
     deleteButton.innerText = "Delete";
@@ -204,8 +209,9 @@ function createNewElement(task) {
  function save() {
 
      let taskArr = [];
+
      for (let i = 0; i < task.children.length; i++) {
-         taskArr.push(task.children[i].getElementsByTagName('label')[0].innerText);
+         taskArr.push(task.children[i].getElementsByTagName('label')[0].innerText.toLowerCase().capitalize());
      }
 
      localStorage.removeItem('todo');
