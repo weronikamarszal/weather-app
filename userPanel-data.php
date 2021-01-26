@@ -33,20 +33,52 @@ $name=$_SESSION["firstname"];
 
 </nav>
 
-<div class="container">
-    <?php
-        echo "<p>Witaj, $name </p>";
-    ?>
-    <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-           aria-controls="collapseExample">
-            Link with href
-        </a>
-    </p>
-    <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim
-            keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+
+<div class="row">
+    <div class="col-2">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Twoje miasta</a>
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Twoje reklamy</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Twoje dane</a>
+        </div>
+    </div>
+    <div class="col-10">
+        <div class="tab-content" id="v-pills-tabContent">
+
+            <!-- MOJE MIASTA -->
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <?php
+                    echo "<p style='text-align: center; font-size: xx-large'>Witaj, $name </p>";
+                ?>
+
+                <div class="addCity mt-5 pr-1">
+                    <h4 class="h4addCity">Dodaj miasto do ulubionych</h4>
+                    <div class="input-group mb-3">
+                        <input type="text" id="addCityInput" class="form-control" placeholder="Wpisz miasto" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button" id="button-addon2" onclick="setQuery()">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="h4TwojeMiasta mt-5">Twoje Miasta</h4>
+                <div class="citiesList">
+                    <ul class="list-group list-group-flush" id="citiesList">
+                    </ul>
+                </div>
+            </div>
+
+            <!-- MOJE REKLAMY -->
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+
+
+            </div>
+
+            <!-- MOJE DANE -->
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+
+
+            </div>
         </div>
     </div>
 </div>
@@ -57,6 +89,10 @@ $name=$_SESSION["firstname"];
 </footer>
 
 <script src="js/adPanel.js"></script>
+<script src="js/getCitiesList.js"></script>
+
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

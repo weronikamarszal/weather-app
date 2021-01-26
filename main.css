@@ -26,3 +26,19 @@
     display: flex;
     justify-content: space-around;
 }
+
+.citiesList {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.addCity {
+    margin: auto;
+    width: 40%;
+}
+
+.h4addCity {
+    display: flex;
+    justify-content: space-around;
+}
+
