@@ -24,7 +24,7 @@ function changePassword() {
     if (x.value !== "" || y.value !== "") {
         if (x.value === y.value) {
             $.ajax({
-                url: "http://localhost:63342/weather-app/changePassword.php?_ijt=rd97bab58eo5f7kdbfpjnvp76m",
+                url: "http://localhost:63342/test2/changePassword.php?_ijt=rd97bab58eo5f7kdbfpjnvp76m",
                 type: "POST",
                 data: ({password: x.value}),
                 dataType: "text",

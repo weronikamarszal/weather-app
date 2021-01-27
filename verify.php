@@ -47,7 +47,7 @@ else{
 <body>
 
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#" style="flex:1">
+    <a class="navbar-brand" href="index.php" style="flex:1">
         <img src="img/icon.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         What's the weather?
     </a>
@@ -61,8 +61,15 @@ else{
     <div class="row no-gutters">
         <div class="col-md-3"></div>
         <div class="col-md-6 login-container">
-            <div class="row no-gutters">
-                Hejka
+            <div class="container">
+                <div class="row justify-content-center">
+                    <h4>Gratulacje! Konto zostało zweryfikowane.</h4>
+                </div>
+
+                <div class="row justify-content-center">
+                    <a style="align-items: center;" class="btn btn-primary btn-lg" href='login.php'>Zaloguj się</a>
+                </div>
+
             </div>
 
         </div>

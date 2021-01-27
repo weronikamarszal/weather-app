@@ -44,6 +44,7 @@ if(isset($_SESSION["userid"])){
             }
         }
         ?>
+        <a href='userPanel-data.php'>Panel użytkownika</a>
         <a href="index.php">Strona główna</a>
         <a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a>
     </div>
