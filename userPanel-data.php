@@ -50,14 +50,14 @@ if(isset($_SESSION["userid"])){
 
 
 <div class="row">
-    <div class="col-2">
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <div class="col-12 col-md-2">
+        <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Twoje miasta</a>
             <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Twoje reklamy</a>
             <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Twoje dane</a>
         </div>
     </div>
-    <div class="col-10">
+    <div class="col-12 col-md-10">
         <div class="tab-content" id="v-pills-tabContent">
 
             <!-- MOJE MIASTA -->
@@ -66,7 +66,7 @@ if(isset($_SESSION["userid"])){
                     echo "<p style='text-align: center; font-size: xx-large'>Witaj, $name </p>";
                 ?>
 
-                <div class="addCity mt-5 pr-1">
+                <div class="addCity mt-5 pr-1 panel-item">
                     <h4 class="h4addCity">Dodaj miasto do ulubionych</h4>
                     <div class="input-group mb-3">
                         <input type="text" id="addCityInput" class="form-control" placeholder="Wpisz miasto" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -77,7 +77,7 @@ if(isset($_SESSION["userid"])){
                 </div>
 
                 <h4 class="h4TwojeMiasta mt-5">Twoje Miasta</h4>
-                <div class="citiesList">
+                <div class="citiesList panel-item">
                     <ul class="list-group list-group-flush" id="citiesList">
                     </ul>
                 </div>
@@ -91,30 +91,33 @@ if(isset($_SESSION["userid"])){
             $stmt->execute(array('userId' => $userId));
             $userAdverts = $stmt->fetchAll();
             ?>
-                <table class="table table-bordered dataTable">
-                    <thead>
-                    <tr>
-                        <th>Tytuł </th>
-                        <th>Opis</th>
-                        <th>Więcej</th>
-                        <th>Obrazek</th>
-                        <th>Link</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($userAdverts as $advertisement): ?>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered dataTable">
+                        <thead>
                         <tr>
-                            <td> <?= $advertisement['name'] ?> </td>
-                            <td> <?= $advertisement['description'] ?> </td>
-                            <td> <?= $advertisement['more'] ?> </td>
-                            <td> <?= $advertisement['picture'] ?> </td>
-                            <td> <?= $advertisement['link'] ?> </td>
+                            <th>Tytuł</th>
+                            <th>Opis</th>
+                            <th>Więcej</th>
+                            <th>Obrazek</th>
+                            <th>Link</th>
                         </tr>
-                    <?php endforeach; ?>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($userAdverts as $advertisement): ?>
+                            <tr>
+                                <td> <?= $advertisement['name'] ?> </td>
+                                <td> <?= $advertisement['description'] ?> </td>
+                                <td> <?= $advertisement['more'] ?> </td>
+                                <td> <?= $advertisement['picture'] ?> </td>
+                                <td> <?= $advertisement['link'] ?> </td>
+                            </tr>
+                        <?php endforeach; ?>
 
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
 
 
             </div>
@@ -124,7 +127,7 @@ if(isset($_SESSION["userid"])){
                 <?php
                 echo "<p style='text-align: center; font-size: xx-large'>Witaj, $name </p>";
                 ?>
-                <div class="usersData">
+                <div class="usersData panel-item">
                     <div class="name"> <div>Nazwa użytkownika:</div>
                         <div class="dbInfo">
                             <?php
@@ -147,7 +150,7 @@ if(isset($_SESSION["userid"])){
                         </div>
                     </div>
                 </div>
-                <div class="changePassword mt-5">
+                <div class="changePassword mt-5 panel-item">
                     <p style='text-align: center; font-size: x-large'>Zmiana hasła </p>
                     <input type="password" id="inputPassword" class="form-control mt-3" aria-describedby="passwordHelpInline" placeholder="Wpisz nowe hasło">
                     <input type="password" id="inputPassword2" class="form-control mt-2" aria-describedby="passwordHelpInline" placeholder="Powtórz nowe hasło">

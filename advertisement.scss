@@ -59,11 +59,13 @@ $anim-speed: 0.3s;
         .details {
             font-size: 16px;
             padding: 20px;
+            padding-top: 0;
             color: #fff;
             position: absolute;
             bottom: 0;
             left: 0;
             z-index: 3;
+            width: 100%;
 
             span {
                 display: block;
@@ -85,6 +87,13 @@ $anim-speed: 0.3s;
                 line-height: 1.2;
                 margin-top: 5px;
                 font-size: 12px;
+            }
+
+            .like {
+                bottom: 5px;
+                position: absolute;
+                right: 0.5em;
+                z-index: 1000000;
             }
         }
 

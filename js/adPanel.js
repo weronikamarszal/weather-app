@@ -19,7 +19,7 @@ function addAd() {
 }
 
 function deleteAd(id) {
-    fetch(SERVER + 'weather-app/php/deleteAdvertisement.php?id=' + id)
+    fetch(SERVER + '/weather-app/php/deleteAdvertisement.php?id=' + id)
         .then(response => response.json())
         .then(data => {
             console.log(data)

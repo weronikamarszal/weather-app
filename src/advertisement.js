@@ -81,6 +81,9 @@ function createAdvertisementHTML(advertisement) {
     let title = element.querySelector(".title");
     title.innerText = advertisement.name;
 
+    let icon = element.querySelector(".icon");
+    icon.classList.add(["fa-heart"]);
+
     let likeButton = element.querySelector(".like");
     if (advertisement.likesCount > 0) {
         likeButton.setAttribute("disabled", true);

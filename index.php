@@ -171,6 +171,7 @@
 <script src="js/server.js"></script>
 <script src="js/pogoda.js"></script>
 <script src="src/advertLike.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 </body>
@@ -178,7 +179,9 @@
     <div class="tile">
         <img class="advert-image">
         <div class="details">
-            <button class="like"> LIKE</button>
+            <button class="like">
+                <i class="icon fa"> </i>
+                        </button>
             <span class="title"></span>
             <span class="desc info"></span>
         </div>

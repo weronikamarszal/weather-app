@@ -39,11 +39,13 @@
 .tile .details {
   font-size: 16px;
   padding: 20px;
+  padding-top: 0;
   color: #fff;
   position: absolute;
   bottom: 0;
   left: 0;
   z-index: 3;
+  width: 100%;
 }
 .tile .details span {
   display: block;
@@ -63,6 +65,12 @@
   line-height: 1.2;
   margin-top: 5px;
   font-size: 12px;
+}
+.tile .details .like {
+  bottom: 5px;
+  position: absolute;
+  right: 0.5em;
+  z-index: 1000000;
 }
 .tile:focus:before,
 .tile:focus span, .tile:hover:before,
