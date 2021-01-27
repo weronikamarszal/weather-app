@@ -60,7 +60,7 @@ function ad(tag, adFromDB) {
     let filtered = adFromDB.filter((i) => {
         return i.tag === tag;
     });
-    if (filtered.length ===0){
+    if (filtered.length === 0) {
         console.error(`brak reklamy z odpowiednim tagiem(${tag} )`)
     }
     let randomIndex = Math.floor(Math.random() * filtered.length);
@@ -85,11 +85,19 @@ function createAdvertisementHTML(advertisement) {
     if (advertisement.likesCount > 0) {
         likeButton.setAttribute("disabled", true);
     }
-    likeButton.addEventListener("click", () => {fun(advertisement.id)});
+    likeButton.addEventListener("click", () => {
+        fun(advertisement.id)
+            .then(() => {
+                displayAd(pageWeather)
+            });
+    });
     return element;
 }
 
+let pageWeather;
+
 function displayAd(weather) {
+    pageWeather = weather;
     let adElements = document.querySelectorAll(".advertisement");
     getDataFromDB()
         .then((x) => {

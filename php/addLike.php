@@ -8,8 +8,16 @@ session_start();
 $userId = isset($_SESSION["userid"]) ? $_SESSION["userid"] : null;
 
 try {
-    $stmt = $dbh->prepare("INSERT INTO likes (userId, advertisementId) VALUES (:userId, :advertisementId)");
     $tab = ["advertisementId"=>$_GET["advertisementId"], "userId"=>$userId];
+
+    $stmt = $dbh->prepare("SELECT * FROM likes WHERE userId = :userId AND advertisementId = :advertisementId");
+    $stmt->execute($tab);
+    $like = $stmt->fetchObject();
+    if ($like) {
+        throw new Exception("już polubiono");
+    }
+
+    $stmt = $dbh->prepare("INSERT INTO likes (userId, advertisementId) VALUES (:userId, :advertisementId)");
     $stmt->execute($tab);
     $like = $stmt->fetchAll();
     echo json_encode($like);
