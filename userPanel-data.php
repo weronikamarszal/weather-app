@@ -2,7 +2,6 @@
 <?php
 require_once __DIR__ . '/PDO_databaseConnection.php';
 global $dbh;
-
 session_save_path(getcwd() . "/tmp");
 session_start();
 if(isset($_SESSION["userid"])){

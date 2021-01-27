@@ -122,7 +122,7 @@
     </div>
     <div class="advertisement"></div>
     <div class="row">
-        <div id="chartContainer">
+        <div id="chartContainer" style="width=100%; height=80vh;">
            <!-- <canvas id="myChart"></canvas>-->
         </div>
     </div>

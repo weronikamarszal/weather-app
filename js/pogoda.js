@@ -100,8 +100,10 @@ function displayForecast(weathers){
 
     var myChart = new Chart(ctx, {
         type: 'line',
+
         data: {
             labels: arrayDates,
+
             datasets: [
                 {
                     borderColor: '#69CDE6',
@@ -111,6 +113,8 @@ function displayForecast(weathers){
             ]
         },
         options:{
+            responsive: true,
+            maintainAspectRatio: false,
             title: {
                 display: true,
                 text: `Prognoza pogody dla ${citynCountry}`,
