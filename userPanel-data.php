@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <?php
+require_once __DIR__ . '/PDO_databaseConnection.php';
+global $dbh;
+
 session_save_path(getcwd() . "/tmp");
 session_start();
 if(isset($_SESSION["userid"])){
-$name=$_SESSION["firstname"];
-$username=$_SESSION["username"];
-$email=$_SESSION["email"];
-$role=$_SESSION["role"];
+    $name=$_SESSION["firstname"];
+    $username=$_SESSION["username"];
+    $email=$_SESSION["email"];
+    $role=$_SESSION["role"];
+    $userId=$_SESSION["userid"];
 }
 ?>
 <html lang="en">
@@ -81,6 +85,36 @@ $role=$_SESSION["role"];
 
             <!-- MOJE REKLAMY -->
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <p style='text-align: center; font-size: xx-large'>Witaj, <?=$name?> </p>
+            <?php
+            $stmt= $dbh->prepare("SELECT * FROM advertisements a JOIN likes l on l.advertisementId = a.id WHERE userId = :userId ");
+            $stmt->execute(array('userId' => $userId));
+            $userAdverts = $stmt->fetchAll();
+            ?>
+                <table class="table table-bordered dataTable">
+                    <thead>
+                    <tr>
+                        <th>Tytuł </th>
+                        <th>Opis</th>
+                        <th>Więcej</th>
+                        <th>Obrazek</th>
+                        <th>Link</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($userAdverts as $advertisement): ?>
+                        <tr>
+                            <td> <?= $advertisement['name'] ?> </td>
+                            <td> <?= $advertisement['description'] ?> </td>
+                            <td> <?= $advertisement['more'] ?> </td>
+                            <td> <?= $advertisement['picture'] ?> </td>
+                            <td> <?= $advertisement['link'] ?> </td>
+                        </tr>
+                    <?php endforeach; ?>
+
+
+                    </tbody>
+                </table>
 
 
             </div>
