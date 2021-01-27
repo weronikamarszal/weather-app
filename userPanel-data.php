@@ -6,6 +6,7 @@ if(isset($_SESSION["userid"])){
 $name=$_SESSION["firstname"];
 $username=$_SESSION["username"];
 $email=$_SESSION["email"];
+$role=$_SESSION["role"];
 }
 ?>
 <html lang="en">
@@ -29,8 +30,16 @@ $email=$_SESSION["email"];
         What's the weather?
     </a>
     <div class="navbar-actions">
+        <?php
+            if($role=="admin"){
+                echo "<a href='userManaging.php'>Zarządzanie użytkownikami</a>";
+                echo "<a href='advertPanel.php'>Zarządzanie reklamami</a>";
+                echo "<a href='addAdvertisement.php'>Dodaj reklamę</a>";
+            }
+
+        ?>
         <a href="index.php">Strona główna</a>
-        <button type="button" class="btn btn-outline-danger">Wyloguj się</button>
+        <a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a>
     </div>
 
 </nav>
@@ -105,9 +114,9 @@ $email=$_SESSION["email"];
                     </div>
                 </div>
                 <div class="changePassword mt-5">
-                    <p style='text-align: center; font-size: x-large'>Zmienic hasło </p>
+                    <p style='text-align: center; font-size: x-large'>Zmiana hasła </p>
                     <input type="password" id="inputPassword" class="form-control mt-3" aria-describedby="passwordHelpInline" placeholder="Wpisz nowe hasło">
-                    <input type="password" id="inputPassword2" class="form-control mt-2" aria-describedby="passwordHelpInline" placeholder="Powtórż nowe hasło">
+                    <input type="password" id="inputPassword2" class="form-control mt-2" aria-describedby="passwordHelpInline" placeholder="Powtórz nowe hasło">
                     <p id="passError"></p>
                     <div class="submitPass">
                         <div class="form-group form-check">

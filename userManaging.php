@@ -1,3 +1,12 @@
+<?php
+session_save_path(getcwd() . "/tmp");
+session_start();
+if(isset($_SESSION["userid"])){
+    $name=$_SESSION["firstname"];
+    $role=$_SESSION["role"];
+}
+?>
+<!doctype html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,14 +23,27 @@
 <body>
 
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#" style="flex:1">
+    <a class="navbar-brand" href="index.php" style="flex:1">
         <img src="img/icon.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         What's the weather?
     </a>
-
-    <a href="index.php">
-        Strona główna
-    </a>
+    <?php
+    if(isset($_SESSION["userid"])){
+        echo "<p style='position:relative;bottom:-6px;'>Witaj, $name </p>";
+    }
+    ?>
+    <div class="navbar-actions">
+        <?php
+        if(isset($_SESSION["userid"])){
+            if($role=="admin"){
+                echo "<a href='advertPanel.php'>Zarządzanie reklamami</a>";
+                echo "<a href='addAdvertisement.php'>Dodaj reklamę</a>";
+            }
+            echo "<a href='userPanel-data.php'>Panel użytkownika</a>";
+            echo "<a href='index.php'>Strona główna</a>";
+            echo "<a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a>";
+        }
+        ?>
 </nav>
 
 <div class="container">

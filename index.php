@@ -51,12 +51,17 @@
     </a>
     <?php
     if(isset($_SESSION["userid"])){
-        echo "<p>Witaj, $name </p>";
+        echo "<p style='position:relative;bottom:-6px;'>Witaj, $name </p>";
     }
     ?>
     <div class="navbar-actions">
         <?php
         if(isset($_SESSION["userid"])){
+            if($role=="admin"){
+                echo "<a href='userManaging.php'>Zarządzanie użytkownikami</a>";
+                echo "<a href='advertPanel.php'>Zarządzanie reklamami</a>";
+                echo "<a href='addAdvertisement.php'>Dodaj reklamę</a>";
+            }
             echo "<a href='userPanel-data.php'>Panel użytkownika</a>";
             echo "<a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a>";
         }

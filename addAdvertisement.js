@@ -2,7 +2,7 @@ function createAd(formValue) {
     fetch('/weather-app/php/addAdvertisement.php', {method: 'POST', body: formValue})
         .then(data => data.text())
         .then(data => {
-            location.replace('/weather-app/advertPanel.html')
+            location.replace('/weather-app/advertPanel.php')
         })
 }
 
@@ -11,7 +11,7 @@ function editAd(id, formValue) {
     fetch(`/weather-app/php/addAdvertisement.php?id=${id}`, {method: 'POST', body: formValue})
         .then(data => data.text())
         .then(data => {
-            location.replace('/weather-app/advertPanel.html')
+            location.replace('/weather-app/advertPanel.php')
         })
 }
 

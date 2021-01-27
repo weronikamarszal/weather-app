@@ -1,5 +1,5 @@
 function editAd(advertisement) {
-    location.replace('/weather-app/addAdvertisement.html' +
+    location.replace('/weather-app/addAdvertisement.php' +
         `?name=${advertisement.name}&`+
         `description=${advertisement.description}&`+
         `more=${advertisement.more}&`+
@@ -11,7 +11,7 @@ function editAd(advertisement) {
 }
 
 function changeLocation() {
-    location.replace('/weather-app/addAdvertisement.html');
+    location.replace('/weather-app/addAdvertisement.php');
 }
 
 function addAd() {

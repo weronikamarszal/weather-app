@@ -1,3 +1,13 @@
+<?php
+session_save_path(getcwd() . "/tmp");
+session_start();
+if(isset($_SESSION["userid"])){
+$name=$_SESSION["firstname"];
+$username=$_SESSION["username"];
+$email=$_SESSION["email"];
+$role=$_SESSION["role"];
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +18,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <title>Admin's ad panel</title>
-
+    <link rel="shortcut icon" type="image/jpg" href="img/icon.jpg"/>
     <link rel="stylesheet" href="main.css">
     <style>
         #trashImg{
@@ -27,15 +37,26 @@
 <body>
 <!--===============================================HEADER============================================================-->
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#" style="flex:1">
+    <a class="navbar-brand" href="index.php" style="flex:1">
         <img src="img/icon.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         What's the weather?
     </a>
+    <?php
+    if(isset($_SESSION["userid"])) {
+    echo "<p style='position:relative;bottom:-6px;'>Witaj, $name </p>";
+    }
+    ?>
     <div class="navbar-actions">
-        <a href="">
-            Ustawienia
-        </a>
-        <button type="button" class="btn btn-outline-danger">Wyloguj się</button>
+        <?php
+        if(isset($_SESSION["userid"])) {
+            if ($role == "admin") {
+                echo "<a href='userManaging.php'>Zarządzanie użytkownikami</a>";
+                echo "<a href='addAdvertisement.php'>Dodaj reklamę</a>";
+            }
+        }
+        ?>
+        <a href="index.php">Strona główna</a>
+        <a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a>
     </div>
 </nav>
 
