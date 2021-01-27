@@ -1,51 +1,36 @@
 const api={key:"7a7b4325b0cdbb4e8bc97d4c5138c58d", baseurl:"https://api.openweathermap.org/data/2.5/"}
-var lan;
-var lat;
+let task = document.getElementById('citiesList');
+let searchbox = document.getElementById('addCityInput');
+
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
-let task = document.getElementById('citiesList');
-let searchbox = document.getElementById('addCityInput');
-
 function setQuery() {
     getResults(searchbox.value).then(weather => {
-        if (weather) {
-            lan = weather.coord.lon;
-            lat = weather.coord.lat;
-            if(getWeather()) {
-                if (JSON.parse(localStorage.getItem('todo')).task.includes(searchbox.value.toLowerCase().capitalize()) === false) {
-                    let listItem = createNewElement(searchbox.value);
-                    task.appendChild(listItem);
-                    searchbox.value = "";
-                    save();
-                }
+        if (weather.cod == "200") {
+            if (JSON.parse(localStorage.getItem('todo')).task.includes(searchbox.value.toLowerCase().capitalize()) === false) {
+                let listItem = createNewElement(searchbox.value);
+                task.appendChild(listItem);
+                searchbox.value = "";
+                save();
             } else {
                 searchbox.value = "";
-                alert("Niestety nie mamy pogody dla tego miasta");
             }
+        } else {
+            searchbox.value = "";
+            alert("Niestety nie mamy pogody dla tego miasta, albo błędnie wpisałeś nazwę miasta");
         }
     });
+
 }
 
 async function getResults(query) {
     const response = await fetch(`${api.baseurl}weather?q=${query}&units=metric&APPID=${api.key}&lang=pl`);
     const weather  = await response.json();
+    console.log(weather.cod);
     return weather;
 }
-
-function getWeather(){
-    // console.log(lan,lat);
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lan}&exclude=daily,minutely&appid=7a7b4325b0cdbb4e8bc97d4c5138c58d&units=metric`)
-        .then(weathers=> {
-            if(weathers.status == "OK"){
-                return true;
-            } else {
-                return false;
-            }
-        })
-}
-
 
 function createNewElement(task) {
     let listItem = document.createElement('li');
