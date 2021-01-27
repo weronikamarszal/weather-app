@@ -37,6 +37,29 @@
             width: 800px;
             height: 600px
         }
+        .search-box{
+            width: 250px;
+            height:40px;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .col-md-4 {
+                width: 100%;
+            }
+
+            .mt-5 {
+                position: relative;
+                top: -15px;
+            }
+
+            #mapid {
+                position: relative;
+                width: 100%;
+                height: 40vh;
+            }
+        }
+
+
     </style>
 </head>
 
@@ -104,6 +127,7 @@
             </div>
 
             <!---------------------MAP----------------------->
+
             <div class="col-md-6">
                 <div id="mapid">
                 </div>
@@ -129,6 +153,8 @@
 </div>
 
 <!--===============================================FOOTER============================================================-->
+<br>
+<br>
 <footer>
     <p>&copy; Danylo Arbuzov, Jerzy Grzelak, Weronika Marszał</p>
 </footer>
