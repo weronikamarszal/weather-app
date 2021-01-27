@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <?php
 require_once __DIR__ . '/PDO_databaseConnection.php';
 global $dbh;
@@ -12,6 +12,7 @@ if(isset($_SESSION["userid"])){
     $userId=$_SESSION["userid"];
 }
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
