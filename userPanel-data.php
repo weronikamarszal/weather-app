@@ -4,6 +4,8 @@ session_save_path(getcwd() . "/tmp");
 session_start();
 if(isset($_SESSION["userid"])){
 $name=$_SESSION["firstname"];
+$username=$_SESSION["username"];
+$email=$_SESSION["email"];
 }
 ?>
 <html lang="en">
@@ -76,8 +78,45 @@ $name=$_SESSION["firstname"];
 
             <!-- MOJE DANE -->
             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-
-
+                <?php
+                echo "<p style='text-align: center; font-size: xx-large'>Witaj, $name </p>";
+                ?>
+                <div class="usersData">
+                    <div class="name"> <div>Nazwa użytkownika:</div>
+                        <div class="dbInfo">
+                            <?php
+                            echo $username;
+                            ?>
+                        </div>
+                    </div>
+                    <div class="username mt-2"> <div>Imię:</div>
+                        <div class="dbInfo">
+                            <?php
+                            echo $name;
+                            ?>
+                        </div>
+                    </div>
+                    <div class="email mt-2"> <div>E-mail:</div>
+                        <div class="dbInfo">
+                            <?php
+                            echo $email;
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="changePassword mt-5">
+                    <p style='text-align: center; font-size: x-large'>Zmienic hasło </p>
+                    <input type="password" id="inputPassword" class="form-control mt-3" aria-describedby="passwordHelpInline" placeholder="Wpisz nowe hasło">
+                    <input type="password" id="inputPassword2" class="form-control mt-2" aria-describedby="passwordHelpInline" placeholder="Powtórż nowe hasło">
+                    <p id="passError"></p>
+                    <div class="submitPass">
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" onclick="showPassword()">
+                            <label class="form-check-label" for="exampleCheck1">Pokaż hasło</label>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="changePassword()">Zmień haslo</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -89,6 +128,7 @@ $name=$_SESSION["firstname"];
 </footer>
 
 <script src="js/adPanel.js"></script>
+<script src="js/changePassword.js"></script>
 <script src="js/getCitiesList.js"></script>
 
 <!-- Popper.JS -->

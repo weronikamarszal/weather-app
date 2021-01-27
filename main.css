@@ -42,3 +42,49 @@
     justify-content: space-around;
 }
 
+.row {
+    width: 100%;
+}
+
+.usersData {
+    margin: 0 auto;
+    width: 40%;
+}
+
+.name {
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+}
+
+.username {
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+}
+
+.email {
+    font-size: large;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dbInfo {
+    font-size: large;
+    font-weight: bold;
+}
+
+.changePassword {
+    margin: 0 auto;
+    width: 30%;
+}
+
+.submitPass {
+    display: flex;
+    justify-content: space-between;
+}
+
+#passError {
+    text-align: center;
+}
+
