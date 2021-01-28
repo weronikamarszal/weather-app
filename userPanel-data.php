@@ -42,7 +42,7 @@ if(isset($_SESSION["userid"])){
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
             <?php
             if(isset($_SESSION["userid"])){
                 if($role=="admin"){

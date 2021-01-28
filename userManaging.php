@@ -23,12 +23,9 @@ if(isset($_SESSION["userid"])){
         nav .navbar-nav .nav-item .nav-link{
             color: #1c91d0;
         }
-
-
     </style>
 </head>
 <body>
-
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="index.php" style="flex:1">
@@ -39,7 +36,7 @@ if(isset($_SESSION["userid"])){
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
             <li class="nav-item active">
                 <?php
                 if(isset($_SESSION["userid"])){
@@ -61,6 +58,7 @@ if(isset($_SESSION["userid"])){
         </ul>
     </div>
 </nav>
+
 <div class="container">
     <div class="row no-gutters">
         <div class="col-md-1"></div>
@@ -111,4 +109,9 @@ require_once 'databaseConnection.php';
     </div>
 </div>
 <script src="js/userManaging.js"></script>
+<footer>
+
+    <p>&copy; Danylo Arbuzov, Jerzy Grzelak, Weronika Marszał</p>
+</footer>
+
 </body>

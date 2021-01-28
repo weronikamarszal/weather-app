@@ -49,7 +49,7 @@ $role=$_SESSION["role"];
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
             <li class="nav-item active">
                 <?php
                 if(isset($_SESSION["userid"])){
@@ -60,7 +60,7 @@ $role=$_SESSION["role"];
             <?php
             if(isset($_SESSION["userid"])){
                 if($role=="admin"){
-                    echo "<li class='nav-item'><a class='nav-link' href='userManaging.php'>Zarządzanie użytkownikami</li>";
+                    echo "<li class='nav-item'><a class='nav-link' href='userManaging.php'>Zarządzanie użytkownikami</a></li>";
                     echo "<li class='nav-item'><a class='nav-link' href='addAdvertisement.php'>Dodaj reklamę</a></li>";
                 }
                 echo "<li class='nav-item'><a class='nav-link' href='userPanel-data.php'>Panel użytkownika</a></li>";
@@ -71,6 +71,7 @@ $role=$_SESSION["role"];
         </ul>
     </div>
 </nav>
+
 <!--===============================================MAIN==============================================================-->
 <div class="container">
     <h1 class="text-center"><br>Zarządzanie reklamami</h1>
