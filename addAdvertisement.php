@@ -21,36 +21,47 @@ if(isset($_SESSION["userid"])){
     <title>Admin's ad panel</title>
 
     <link rel="stylesheet" href="main.css">
+    <style>
+        nav .navbar-nav .nav-item .nav-link{
+            color: #1c91d0;
+        }
+    </style>
 </head>
 
 <body>
 <!--===============================================HEADER============================================================-->
-<nav class="navbar navbar-light bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="index.php" style="flex:1">
         <img src="img/icon.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         What's the weather?
     </a>
-    <?php
-    if(isset($_SESSION["userid"])) {
-        echo "<p style='position:relative;bottom:-6px;'>Witaj, $name </p>";
-    }
-    ?>
-    <div class="navbar-actions">
-        <?php
-        if(isset($_SESSION["userid"])) {
-            if ($role == "admin") {
-                echo "<a href='userManaging.php'>Zarządzanie użytkownikami</a>";
-                echo "<a href='addAdvertisement.php'>Dodaj reklamę</a>";
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <?php
+                if(isset($_SESSION["userid"])){
+                    echo "<a class='nav-link'>Witaj, $name </a>";
+                }
+                ?>
+            </li>
+            <?php
+            if(isset($_SESSION["userid"])){
+                if($role=="admin"){
+                    echo "<li class='nav-item'><a class='nav-link' href='userManaging.php'>Zarządzanie użytkownikami</a></li>";
+                    echo "<li class='nav-item'><a class='nav-link' href='addAdvertisement.php'>Dodaj reklamę</a></li>";
+                }
+                echo "<li class='nav-item'><a class='nav-link' href='userPanel-data.php'>Panel użytkownika</a></li>";
+                echo "<li class='nav-item'><a class='nav-link' href='index.php'>Strona główna</a></li>";
+                echo "<li class='nav-item'><a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a></li>";
             }
-        }
-        ?>
-        <a href='userPanel-data.php'>Panel użytkownika</a>
-        <a href="index.php">Strona główna</a>
-        <a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a>
+            ?>
+        </ul>
     </div>
 </nav>
-
-
 <div class="container">
     <div class="row no-gutters">
         <div class="col-md-3"></div>

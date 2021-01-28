@@ -25,29 +25,38 @@ if(isset($_SESSION["userid"])){
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="main.css">
     <script src="js/utils.js"></script>
+    <style>
+        nav .navbar-nav .nav-item .nav-link{
+            color: #1c91d0;
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="index.php" style="flex:1">
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.php" style="flex:1">
         <img src="img/icon.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         What's the weather?
     </a>
-    <div class="navbar-actions">
-        <?php
-            if($role=="admin"){
-                echo "<a href='userManaging.php'>Zarządzanie użytkownikami</a>";
-                echo "<a href='advertPanel.php'>Zarządzanie reklamami</a>";
-                echo "<a href='addAdvertisement.php'>Dodaj reklamę</a>";
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <?php
+            if(isset($_SESSION["userid"])){
+                if($role=="admin"){
+                    echo "<li class='nav-item'><a class='nav-link' href='userManaging.php'>Zarządzanie użytkownikami</a></li>";
+                    echo "<li class='nav-item'><a class='nav-link' href='advertPanel.php'>Zarządzanie reklamami</a></li>";
+                    echo "<li class='nav-item'><a class='nav-link' href='addAdvertisement.php'>Dodaj reklamę</a></li>";
+                }
+                echo "<li class='nav-item'><a class='nav-link' href='index.php'>Strona główna</a></li>";
+                echo "<li class='nav-item'><a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a></li>";
             }
-
-        ?>
-        <a href="index.php">Strona główna</a>
-        <a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a>
+            ?>
+        </ul>
     </div>
-
 </nav>
-
 
 <div class="row">
     <div class="col-12 col-md-2">

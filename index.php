@@ -58,6 +58,9 @@
                 height: 40vh;
             }
         }
+        nav .navbar-nav .nav-item .nav-link{
+            color: #1c91d0;
+        }
 
 
     </style>
@@ -67,36 +70,42 @@
 
 <body>
 <!--===============================================HEADER============================================================-->
-<nav class="navbar navbar-light bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#" style="flex:1">
         <img src="img/icon.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         What's the weather?
     </a>
-    <?php
-    if(isset($_SESSION["userid"])){
-        echo "<p style='position:relative;bottom:-6px;'>Witaj, $name </p>";
-    }
-    ?>
-    <div class="navbar-actions">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <?php
+                    if(isset($_SESSION["userid"])){
+                        echo "<a class='nav-link'>Witaj, $name </a>";
+                    }
+                    ?>
+            </li>
         <?php
-        if(isset($_SESSION["userid"])){
+       if(isset($_SESSION["userid"])){
             if($role=="admin"){
-                echo "<a href='userManaging.php'>Zarządzanie użytkownikami</a>";
-                echo "<a href='advertPanel.php'>Zarządzanie reklamami</a>";
-                echo "<a href='addAdvertisement.php'>Dodaj reklamę</a>";
+                echo "<li class='nav-item'><a class='nav-link' href='userManaging.php'>Zarządzanie użytkownikami</a></li>";
+                echo "<li class='nav-item'><a class='nav-link' href='advertPanel.php'>Zarządzanie reklamami</a></li>";
+                echo "<li class='nav-item'><a class='nav-link' href='addAdvertisement.php'>Dodaj reklamę</a></li>";
             }
-            echo "<a href='userPanel-data.php'>Panel użytkownika</a>";
-            echo "<a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a>";
+            echo "<li class='nav-item'><a class='nav-link' href='userPanel-data.php'>Panel użytkownika</a></li>";
+            echo "<li class='nav-item'><a href='logout.php' class='btn btn-outline-danger'>Wyloguj się</a></li>";
         }
         else{
-            echo "<a href='login.php'>Zaloguj</a>";
-            echo "<a href='registration2.php'>Zarejestruj się</a>";
+            echo "<li class='nav-item'><a class='nav-link' href='login.php'>Zaloguj</a></li>";
+            echo "<li class='nav-item'><a class='nav-link' href='registration2.php'>Zarejestruj się</a></li>";
         }
         ?>
-
+        </ul>
     </div>
 </nav>
-
 <!--===============================================MAIN==============================================================-->
 <div class="container-fluid">
     <div class="advertisement"></div>
